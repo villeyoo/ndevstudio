@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -9,12 +8,20 @@ class CustomUser extends Authenticatable
 {
     use Notifiable;
 
-    protected $fillable = ['username', 'password'];
+    protected $table = 'custom_users'; // sesuaikan kalau berbeda
 
-    protected $hidden = [
-        'password', // Jangan lupa menyembunyikan password
+    protected $fillable = [
+        'username',
+        'password',
+        'role',      // tambahkan agar mudah mass assignment saat seed/tinker
     ];
 
-    // Jika nama tabel tidak menggunakan konvensi 'users', tambahkan:
-    protected $table = 'custom_users';  // Ganti dengan nama tabel yang kamu pakai
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
 }

@@ -1,8 +1,9 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Models\CustomUser;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,18 +23,34 @@ public function login(Request $request)
         'password' => 'required|string',
     ]);
 
+    Log::info('Login attempt', ['username' => $request->username, 'ip' => $request->ip()]);
+
+    // Cari user
     $user = \App\Models\CustomUser::where('username', $request->username)->first();
 
-    if ($user && \Illuminate\Support\Facades\Hash::check($request->password, $user->password)) {
-        \Illuminate\Support\Facades\Auth::login($user);
-
-        // INTI-NYA DI SINI:
-        return $user->role === 'owner'
-            ? redirect()->route('dashboard')
-            : redirect()->route('dashboardAdmin'); // anggap selain owner = admin
+    if (! $user) {
+        Log::warning('Login failed: user not found', ['username' => $request->username]);
+        return back()->withErrors(['username' => 'Username atau password salah.'])->withInput();
     }
 
-    return back()->withErrors(['username' => 'Username atau password salah.'])->withInput();
+    // Cek hash password
+    if (! Hash::check($request->password, $user->password)) {
+        Log::warning('Login failed: wrong password', ['username' => $request->username, 'user_id' => $user->id]);
+        return back()->withErrors(['username' => 'Username atau password salah.'])->withInput();
+    }
+
+    // Login & regenerate session
+    Auth::login($user);
+    $request->session()->regenerate();
+
+    Log::info('Login success', ['username' => $request->username, 'user_id' => $user->id, 'role' => $user->role]);
+
+    // Redirect sesuai role
+    if ($user->role === 'owner') {
+        return redirect()->route('dashboard')->with('success', 'Login berhasil!');
+    }
+
+    return redirect()->route('dashboardAdmin')->with('success', 'Login berhasil!');
 }
 
 
