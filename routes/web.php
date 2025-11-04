@@ -82,8 +82,8 @@ Route::middleware(['auth', 'role:owner'])->group(function () {
     });
 
     // Content Creator management (owner)
-    Route::get('/content-creator', [ContentController::class, 'index'])->name('content-creator.index');
-    Route::post('/content-creator', [ContentController::class, 'store'])->name('content-creator.store');
+  Route::post('/content-creator', [ContentController::class, 'store'])->name('content-creator.store');
+Route::get('/content-creator', [ContentController::class, 'index'])->name('content-creator.index');
     Route::get('/content-creator/{id}', [ContentController::class, 'show'])->name('content-creator.show');
     Route::delete('/content-creator/{id}', [ContentController::class, 'destroy'])->name('content-creator.destroy');
     Route::get('/content-creator/{id}/verify', [ContentController::class, 'verify'])->name('content-creator.verify');
