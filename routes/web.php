@@ -76,9 +76,11 @@ Route::middleware(['auth', 'role:owner'])->group(function () {
     Route::get('/polisi/{id}/verifikasi', [PolisiController::class, 'verifyPage'])->name('polisi.verify');
     Route::put('/polisi/{id}/verifikasi', [PolisiController::class, 'updateStatus'])->name('polisi.updateStatus');
     Route::delete('/polisi/{id}', [PolisiController::class, 'destroy'])->name('polisi.destroy');
+    Route::post('/polisi', [PolisiController::class, 'store'])->name('pelamar.polisi.store');
+
 
     // Scripter management
-    Route::get('/admin/pelamar/scripter', [ScripterController::class, 'showScripter'])->name('pelamar.scripter');
+    Route::post('/scripter', [ScripterController::class, 'store'])->name('pelamar.scripter.store');
     Route::get('/pelamar/scripter', [ScripterController::class, 'index'])->name('scripter.index');
     Route::get('/scripter/{id}', [ScripterController::class, 'show'])->name('scripter.show');
     Route::get('/scripter/{id}/verifikasi', [ScripterController::class, 'verifyPage'])->name('scripter.verify');

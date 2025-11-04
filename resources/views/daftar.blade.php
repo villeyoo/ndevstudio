@@ -57,7 +57,7 @@
 
 
     <!-- Scripter -->
-    <form action="{{ route('pelamar.scripter') }}" method="POST" id="programmer" class="tab-form">
+    <form action="{{ route('pelamar.scripter.store') }}" method="POST" id="programmer" class="tab-form">
     @csrf
     <label>Username Roblox:</label>
     <input type="text" name="roblox" required>
@@ -80,7 +80,7 @@
 
 
     <!-- Polisi -->
- <form action="{{ route('pelamar.polisi') }}" method="POST" id="designer" class="tab-form">
+ <form action="{{ route('pelamar.polisi.store') }}" method="POST" id="designer" class="tab-form">
     @csrf
     <label>Username Roblox:</label>
     <input type="text" name="roblox" required>
