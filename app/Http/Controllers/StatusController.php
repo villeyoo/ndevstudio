@@ -55,4 +55,4 @@ class StatusController extends Controller
 
         return redirect()->route('cek-status.form')->with('error', 'Username Discord tidak ditemukan.');
     }
-}
+}   

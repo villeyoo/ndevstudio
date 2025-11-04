@@ -8,7 +8,7 @@ use App\Models\ContentCreator;
 use App\Models\Scripter;
 use App\Models\Polisi;
 use App\Models\Bug;   // ✅ Tambahkan model Bug
-
+use Illuminate\Support\Facades\Storage;
 class AdminController extends Controller
 {
     public function index()
@@ -38,6 +38,24 @@ class AdminController extends Controller
         return view('scripter', compact('scripters'));
     }
 
+    public function adminIndex()
+{
+
+     $totalLowongan      = Lowongan::count();
+        $totalContentCreator= ContentCreator::count();
+        $totalPolisi        = Polisi::count();
+        $totalScripter      = Scripter::count();
+        $bugs = Bug::latest()->take(10)->get();
+
+    return view('dashboard-admin', compact(
+            'totalLowongan',
+            'totalContentCreator',
+            'totalPolisi',
+            'totalScripter',
+            'bugs'          // ✅ kirim ke view
+        ));
+}
+
     public function showPolisi()
     {
         $polisis = Polisi::all();
@@ -50,11 +68,19 @@ class AdminController extends Controller
         return view('content-creator', compact('contentCreators'));
     }
 
-    public function deleteBug($id)
+ public function deleteBug($id)
 {
+    // Cari bug
     $bug = Bug::findOrFail($id);
+
+    // Jika ada file bukti dan file-nya benar-benar ada di storage
+    if ($bug->bukti && Storage::disk('public')->exists($bug->bukti)) {
+        Storage::disk('public')->delete($bug->bukti);
+    }
+
+    // Hapus data bug dari database
     $bug->delete();
 
-    return redirect()->back()->with('success', 'Bug berhasil dihapus.');
+    return redirect()->back()->with('success', 'Bug dan file buktinya berhasil dihapus.');
 }
 }

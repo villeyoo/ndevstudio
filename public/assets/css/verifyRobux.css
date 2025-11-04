@@ -1,0 +1,152 @@
+/* =============================================
+   VERIFY PERMINTAAN ROBUX — Modern Blue UI
+   Cocok dengan dashboard.css kamu
+   Author: ChatGPT
+============================================= */
+
+/* ==== BASE ==== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Plus Jakarta Sans", "Poppins", sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #001b7b 0%, #0034d1 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0e1a40;
+  padding: 30px;
+}
+
+/* ==== CONTAINER ==== */
+.form-container {
+  width: 100%;
+  max-width: 480px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 22px;
+  padding: 35px 40px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-container h2 {
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-bottom: 25px;
+  color: #ffffff;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+}
+
+.form-container p {
+  font-size: 0.95rem;
+  color: #dbeafe;
+  margin-bottom: 8px;
+}
+
+.form-container strong {
+  color: #ffffff;
+}
+
+/* ==== FORM ==== */
+form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Label */
+form label {
+  font-weight: 600;
+  color: #dbeafe;
+  font-size: 0.95rem;
+}
+
+/* Select */
+form select {
+  background: rgba(255, 255, 255, 0.95);
+  color: #001a5a;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.25s ease;
+}
+
+form select:hover {
+  box-shadow: 0 4px 12px rgba(0, 51, 255, 0.25);
+}
+
+/* Textarea */
+form textarea {
+  background: rgba(255, 255, 255, 0.95);
+  color: #001a5a;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-size: 0.95rem;
+  resize: none;
+  min-height: 100px;
+  outline: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+form textarea:focus {
+  box-shadow: 0 4px 14px rgba(0, 51, 255, 0.25);
+}
+
+/* ==== BUTTON ==== */
+form button {
+  margin-top: 10px;
+  background: linear-gradient(135deg, #0059ff 0%, #0034d1 100%);
+  border: none;
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(0, 51, 255, 0.35);
+  transition: all 0.3s ease;
+  letter-spacing: 0.3px;
+}
+
+form button:hover {
+  background: linear-gradient(135deg, #0041c2 0%, #002f91 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 51, 255, 0.4);
+}
+
+/* ==== RESPONSIVE ==== */
+@media (max-width: 480px) {
+  .form-container {
+    padding: 25px 24px;
+  }
+
+  form button {
+    padding: 10px 14px;
+    font-size: 0.95rem;
+  }
+}

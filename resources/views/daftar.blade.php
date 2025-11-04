@@ -8,25 +8,13 @@
     <link rel="stylesheet" href="{{ asset('assets/css/daftar.css') }}">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+     <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ asset('assets/images/viel.png') }}">
 </head>
 <body>
     <!-- Navbar -->
-    <header class="navbar">
-        <div class="logo">Ndev Studio.</div>
-        <nav id="nav-menu">
-               <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="#">Tentang Kami</a></li>
-                <li><a href="#">Kontak</a></li>
-               <li class="login"><a href="{{ url('/login') }}">Login</a></li>
-            </ul>
-        </nav>
-        <div class="hamburger" id="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </header>
+ 
 
     <!-- Hero Section -->
     <section class="hero">
@@ -56,13 +44,13 @@
   <form action="{{ route('content-creator.store') }}" method="POST" id="creator" class="tab-form active">
     @csrf
     <label>Link Profile TikTok:</label>
-    <input type="url" name="tiktok" placeholder="https://www.tiktok.com/@username" required>
+    <input class="masukan" type="url" name="tiktok" placeholder="https://www.tiktok.com/@username" required>
 
     <label>Username Discord:</label>
-    <input type="text" name="discord" placeholder="Username#1234" required>
+    <input class="masukan" type="text" name="discord" placeholder="Username#1234" required>
 
     <label>Jumlah Followers:</label>
-    <input type="number" name="followers" placeholder="Jumlah followers" required>
+    <input class="masukan" type="number" name="followers" placeholder="Jumlah followers" required>
 
     <button type="submit">Ajukan</button>
 </form>

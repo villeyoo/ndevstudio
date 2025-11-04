@@ -1,87 +1,156 @@
-/* Reset beberapa properti */
+/* ===== Base Setup ===== */
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  font-family: "Plus Jakarta Sans", sans-serif;
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
-  background-color: #ffffff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #001b7b 0%, #0034d1 100%);
+  background-attachment: fixed;
+  color: #fff;
 }
 
+/* ===== Login Container ===== */
 .login-container {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 20px;
 }
 
+/* ===== Card ===== */
 .login-card {
-  background-color: #fff;
-  padding: 40px;
-  border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  width: 500px; /* Lebarkan card */
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(18px);
+  border-radius: 24px;
+  padding: 50px 40px;
+  width: 100%;
+  max-width: 400px;
   text-align: center;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+  animation: fadeIn 0.8s ease-out;
 }
 
-.logo {
-  margin-bottom: 20px;
-  color: #000000; /* Biru sesuai tema */
+.logo img {
+  margin-bottom: 12px;
 }
 
 h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: #000000; /* Biru sesuai tema */
-  font-family: 'Poppins'
+  font-size: 28px;
+  font-weight: 700;
+  color: #ffffff;
 }
 
+.subtitle {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 28px;
+}
+
+/* ===== Form Input ===== */
 .input-group {
-  margin-bottom: 15px;
   text-align: left;
-  font-family: 'Poppins'
+  margin-bottom: 18px;
 }
 
 .input-group label {
-  font-size: 14px;
-  margin-bottom: 5px;
   display: block;
-  color: #333;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #e0e7ff;
+  font-size: 14px;
 }
 
 .input-group input {
   width: 100%;
-  padding: 10px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
   font-size: 14px;
-  font-family: 'Poppins';
-  border-radius: 10px;
-  border: 1px solid #ccc;
   outline: none;
-  transition: all 0.3s ease;
+  transition: border 0.2s ease, background 0.2s ease;
+}
+
+.input-group input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .input-group input:focus {
-  border-color: #007bff; /* Biru ketika fokus */
+  border-color: #82b3ff;
+  background: rgba(255, 255, 255, 0.25);
 }
 
+/* ===== Button ===== */
 .btn-login {
   width: 100%;
-  padding: 12px;
-  font-size: 16px;
-  font-family: 'Poppins';
-  background-color: #007bff; /* Biru sesuai tema */
-  color: white;
+  background: #ffffff;
+  color: #002fb1;
   border: none;
-  border-radius: 15px;
+  border-radius: 14px;
+  padding: 12px;
+  font-weight: 700;
   cursor: pointer;
-  transition: all 0.3s ease;
+  font-size: 15px;
+  transition: all 0.25s ease;
+}
+/* ===== Tombol Kembali ===== */
+.btn-back {
+  display: inline-block;
+  margin-top: 18px;
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 600;
+  border: 2px solid #ffffff;
+  border-radius: 12px;
+  padding: 10px 22px;
+  transition: all 0.25s ease;
+  font-size: 14px;
 }
 
+.btn-back:hover {
+  background: #ffffff;
+  color: #002fb1;
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+
 .btn-login:hover {
-  background-color: #0056b3; /* Biru lebih gelap saat hover */
+  background: #b8ff3c;
+  color: #001a6b;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== Animations ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 480px) {
+  .login-card {
+    padding: 40px 25px;
+    border-radius: 20px;
+  }
+  h2 {
+    font-size: 24px;
+  }
 }

@@ -1,33 +1,60 @@
-<aside class="sidebar">
-  <div class="logo">Ndev Studio</div>
+<div class="sidebar">
+  <div class="sidebar-header">
+    <h3 class="logo">Ndev Studio</h3>
+  </div>
+
   <ul class="menu">
-    <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
-    <li><a href="{{ route('lowongan.create') }}">Tambah Lowongan</a></li>
-      <li><a href="{{ route('bug.index') }}">Tambah Bug</a></li>
-    <li><a href="{{ route('lowongan.list') }}">List Lowongan</a></li>
-    <li><a href="{{ route('scripter.index') }}">Scripter</a></li>
-    <li><a href="{{ route('polisi.index') }}">Polisi</a></li>
-    <li><a href="{{ route('content-creator.index') }}">Content Creator</a></li>
-   <form action="{{ route('logout') }}" method="POST" style="display:inline;">
-    @csrf
-    <button type="submit" class="btn btn-logout">Logout</button>
-</form>
+    <li><a href="{{ route('dashboard') }}" class="menu-item {{ Request::is('dashboard') ? 'active' : '' }}">
+      <i class="fa-solid fa-house"></i>
+      <span>Dashboard</span>
+    </a></li>
+
+    <li><a href="{{ route('lowongan.create') }}" class="menu-item">
+      <i class="fa-solid fa-plus"></i>
+      <span>Tambah Lowongan</span>
+    </a></li>
+
+    <li><a href="{{ route('bug.index') }}" class="menu-item">
+      <i class="fa-solid fa-bug"></i>
+      <span>Tambah Bug</span>
+    </a></li>
+
+      <li><a href="{{ route('robux.index') }}" class="menu-item">
+      <i class="fa-solid fa-bug"></i>
+      <span>Permintaan Robux</span>
+    </a></li>
+
+    <li><a href="{{ route('lowongan.list') }}" class="menu-item">
+      <i class="fa-solid fa-list"></i>
+      <span>List Lowongan</span>
+    </a></li>
+
+    <li><a href="{{ route('scripter.index') }}" class="menu-item">
+      <i class="fa-solid fa-code"></i>
+      <span>Scripter</span>
+    </a></li>
+
+
+
+    <li><a href="{{ route('polisi.index') }}" class="menu-item">
+      <i class="fa-solid fa-shield-halved"></i>
+      <span>Polisi</span>
+    </a></li>
+
+    <li><a href="{{ route('content-creator.index') }}" class="menu-item">
+      <i class="fa-solid fa-user-pen"></i>
+      <span>Content Creator</span>
+    </a></li>
   </ul>
-</aside>
 
-<style>
-  /* Styling untuk tombol logout */
-.btn-logout {
-    background-color: #ff4d4d; /* Warna merah */
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
+  <form action="{{ route('logout') }}" method="POST" class="logout-form">
+    @csrf
+    <button type="submit" class="logout-btn">
+      <i class="fa-solid fa-right-from-bracket"></i>
+      <span>Logout</span>
+    </button>
+  </form>
+</div>
 
-.btn-logout:hover {
-    background-color: #ff1a1a; /* Merah lebih gelap saat hover */
-}
-
-</style>
+<!-- Font Awesome CDN -->
+<script src="https://kit.fontawesome.com/a2e0e6b9d4.js" crossorigin="anonymous"></script>

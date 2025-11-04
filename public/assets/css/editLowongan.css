@@ -1,3 +1,9 @@
+
+
+*{
+     font-family: 'Plus Jakarta Sans', 'Poppins';
+}
+
 .form-container {
   max-width: 600px;
   margin: 30px auto;

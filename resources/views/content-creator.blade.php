@@ -7,6 +7,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('assets/css/dashboard.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/css/lowonganList.css') }}">
+   <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ asset('assets/images/viel.png') }}">
 </head>
 <body>
   <!-- Sidebar -->
@@ -53,7 +55,7 @@
                 <td>
                   <div class="actions">
                     <!-- Lihat detail Content Creator -->
-                    <a href="{{ route('content-creator.show', $contentCreator->id) }}" class="btn btn-view">Lihat</a>
+
                     <a href="{{ route('content-creator.verify', $contentCreator->id) }}" class="btn btn-verify">Verifikasi</a>
                     <!-- Form untuk menghapus Content Creator -->
                     <form action="{{ route('content-creator.destroy', $contentCreator->id) }}" method="POST" style="display:inline;">

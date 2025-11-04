@@ -1,89 +1,101 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NDEV Studio</title>
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/cekstatus.css') }}">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cek Status - NDEV Studio</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/css/cekstatus.css') }}">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="{{ asset('assets/images/viel.png') }}">
 </head>
 <body>
-    <!-- Navbar -->
-    <header class="navbar">
-        <div class="logo">Ndev Studio.</div>
-        <nav id="nav-menu">
-                 <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="#">Tentang Kami</a></li>
-                <li><a href="#">Kontak</a></li>
-               <li class="login"><a href="{{ url('/login') }}">Login</a></li>
-            </ul>
-        </nav>
-        <div class="hamburger" id="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Cek status pendaftaran<br></h1>
-            <p>masukan username discord mu dengan benar saat kamu mendaftar</p>
-        </div>
-        <div class="hero-image">
-            <img src="{{ asset('assets/images/viel.svg') }}" alt="maskot" class="maskot">
-        </div>
-    </section>
+  <!-- NAVBAR (capsule centered - same style as homepage) -->
 
-    <!-- Stats Section -->
-    <section class="stats">
-      <div class="status-container">
-        <h3>Masukkan Username Discord untuk Cek Status Pendaftaran</h3>
 
-        @if(session('error'))
-          <div class="alert-error">
-            {{ session('error') }}
-          </div>
-        @endif
+<!-- HERO SECTION -->
+<section class="hero">
+  <div class="hero-card">
+    <div class="hero-content">
+      <h1>Cek Status Pendaftaran</h1>
+      <p>Masukkan username Discord yang kamu pakai ketika mendaftar untuk melihat status.</p>
 
-        <form action="{{ route('cek-status.check') }}" method="POST">
-          @csrf
-          <label for="discord">Username Discord:</label>
-          <input type="text" name="discord" id="discord" required>
-          <button type="submit" class="btn btn-confirm">Cek Status</button>
-        </form>
+      <!-- Form langsung di sini -->
+      <form action="{{ route('cek-status.check') }}" method="POST" class="status-form-inline">
+        @csrf
+        <input class="input" type="text" name="discord" id="discord" placeholder="Masukkan username Discord (mis. user#1234)" required>
+        <button type="submit" class="btn-primary">Cek Status</button>
+      </form>
 
-        @isset($status)
-          <div class="status-result @if($status == 'pending') pending @elseif($status == 'diterima') accepted @elseif($status == 'ditolak') rejected @endif">
-          </div>
-        @endisset
+      <div class="btn-wrapper">
+        <a href="{{ url('/') }}" class="btn small">Kembali ke Beranda</a>
       </div>
-    </section>
 
-    <!-- Pengumuman Card -->
- @isset($status)
-<section class="announcement">
-    <div class="announcement-container @if($status == 'pending') pending @elseif($status == 'diterima') accepted @elseif($status == 'ditolak') rejected @endif">
-        <h3>Pengumuman</h3>
-        <p><strong>{{ ucfirst($discord) }}</strong></p>
+      <!-- Pesan status -->
+      @if(session('error'))
+        <div class="status-msg error">{{ session('error') }}</div>
+      @endif
 
-        <!-- Tampilkan pesan berbeda berdasarkan status -->
-        @if($status == 'diterima')
-            <p>Selamat, pendaftaran Anda <strong>{{ ucfirst($status) }}</strong> menjadi <strong>{{ $role }}</strong>!</p>
-        @elseif($status == 'ditolak')
-            <p>Mohon maaf, pendaftaran Anda <strong>{{ ucfirst($status) }}</strong> menjadi <strong>{{ $role }}</strong>.</p>
-        @else
-            <p>Pendaftaran Anda masih <strong>{{ ucfirst($status) }}</strong>.</p>
-        @endif
+      @isset($status)
+        <div class="status-msg result {{ $status }}">
+          @if($status == 'diterima')
+            <strong>Diterima</strong> — Selamat! Anda diterima sebagai <strong>{{ $role }}</strong>.
+          @elseif($status == 'ditolak')
+            <strong>Ditolak</strong> — Mohon maaf, pendaftaran Anda ditolak (role: {{ $role }}).
+          @else
+            <strong>Pending</strong> — Pendaftaran Anda masih dalam proses. Silakan tunggu.
+          @endif
+        </div>
+      @endisset
     </div>
+  </div>
 </section>
-@endisset
 
+  <!-- PENGUMUMAN (opsional, muncul bila ada hasil) -->
+  @isset($status)
+  <section class="announcement">
+    <div class="announcement-card {{ $status }}">
+      <h4>Pengumuman untuk <span>{{ $discord }}</span></h4>
 
-    <script src="{{ asset('assets/js/script.js') }}"></script>
+      @if($status == 'diterima')
+        <p>Selamat! Permintaanmu telah <strong>DITERIMA</strong>. Role: <strong>{{ $role }}</strong>.</p>
+      @elseif($status == 'ditolak')
+        <p>Mohon maaf, permintaanmu <strong>DITOLAK</strong>. Silakan periksa kembali persyaratan.</p>
+      @else
+        <p>Status pendaftaranmu saat ini <strong>PENDING</strong>. Mohon ditunggu proses verifikasi.</p>
+      @endif
+    </div>
+  </section>
+  @endisset
+
+  <!-- Script: toggle menu & sticky shadow -->
+  <script>
+    (function(){
+      const menuToggle = document.getElementById('menu-toggle');
+      const navLinks = document.getElementById('nav-links');
+      const navbar = document.querySelector('.navbar');
+
+      if(menuToggle){
+        menuToggle.addEventListener('click', () => {
+          navLinks.classList.toggle('show');
+        });
+      }
+
+      window.addEventListener('scroll', () => {
+        if(window.scrollY > 40){
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      });
+    })();
+  </script>
 </body>
 </html>

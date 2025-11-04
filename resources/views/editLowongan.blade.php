@@ -9,6 +9,8 @@
   <!-- CSS -->
   <link rel="stylesheet" href="{{ asset('assets/css/dashboard.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/css/editLowongan.css') }}">
+   <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ asset('assets/images/viel.png') }}">
 </head>
 <body>
   <!-- Sidebar -->

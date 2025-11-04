@@ -1,73 +1,292 @@
+/* ===== BASE ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Plus Jakarta Sans", "Poppins", sans-serif;
+}
+
 body {
-  font-family: 'Poppins', sans-serif;
-  background: #f8f9fa;
+  background: linear-gradient(180deg, #000d42 0%, #001a66 40%, #001c80 100%);
+  color: #fff;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+/* ===== NAVBAR (same as homepage) ===== */
+.navbar {
+  position: fixed;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+}
+
+.nav-inner {
+  background: white;
+  border-radius: 60px;
+  padding: 16px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.navbar.scrolled .nav-inner {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Logo */
+.logo {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: black;
+}
+
+/* Links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 30px;
   margin: 0;
   padding: 0;
 }
 
+.nav-links li a {
+  text-decoration: none;
+  font-weight: 600;
+  color: black;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.nav-links li a:hover {
+  color: #002fb1;
+}
+
+/* Login Button */
+.btn-nav {
+  border: 2px solid #002fb1;
+  border-radius: 30px;
+  padding: 8px 20px;
+  color: #002fb1;
+  font-weight: 700;
+  transition: all 0.25s ease;
+  box-shadow: 0 3px 6px rgba(0, 47, 177, 0.15);
+}
+
+.btn-nav:hover {
+  background: #002fb1;
+  color: white;
+  box-shadow: 0 5px 15px rgba(0, 47, 177, 0.25);
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+.menu-toggle {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    padding: 20px 0;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .nav-links li a {
+    padding: 10px 0;
+    color: #00163d;
+  }
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 160px 10% 80px;
+  color: #fff;
+}
+
+.hero-content {
+  flex: 1;
+  min-width: 300px;
+  max-width: 550px;
+}
+
+.hero-content h1 {
+  font-size: 2.6rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.hero-content p {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 26px;
+}
+
+.btn-wrapper .btn {
+  background: #fff;
+  color: #002fb1;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 30px;
+  padding: 12px 28px;
+  display: inline-block;
+  transition: all 0.25s ease;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+.btn-wrapper .btn:hover {
+  background: #b8ff3c;
+  color: #001a6b;
+  transform: translateY(-3px);
+}
+
+.hero-image {
+  flex: 1;
+  text-align: right;
+}
+
+.hero-image img {
+  width: 260px;
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+/* ===== SECTION POSISI TERSEDIA ===== */
 .container {
-  max-width: 100%; /* hapus batasan lebar */
-  width: 100%;
-  padding: 20px 40px; /* kasih padding biar gak nempel layar */
+  max-width: 1100px;
+  margin: 40px auto 100px;
+  padding: 0 20px;
 }
 
 .judul {
-  font-size: 22px;
-  font-weight: 700;
-  margin-bottom: 20px;
   text-align: center;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 40px;
+  position: relative;
 }
 
+.judul::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: #b8ff3c;
+  margin: 12px auto 0;
+  border-radius: 2px;
+}
+
+/* ===== CARD LOWONGAN ===== */
 .card-lowongan {
+  background: #ffffff;
+  color: #001a6b;
+  border-radius: 20px;
+  padding: 30px;
+  margin-bottom: 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #fff;
-  padding: 30px 40px; /* padding lebih lega */
-  border-radius: 15px;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-  margin-bottom: 25px;
-  width: 100%;           /* full lebar container */
-  max-width: 1200px;     /* lebar lebih besar */
-  margin-left: auto;
-  margin-right: auto;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
+.card-lowongan:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
 
 .card-info h3 {
-  font-size: 16px;
+  font-size: 1.4rem;
   font-weight: 700;
-  margin: 0 0 5px;
+  margin-bottom: 6px;
+  color: #001a6b;
 }
 
 .card-info small {
+  font-size: 13px;
+  color: #6879b2;
   display: block;
-  color: #555;
   margin-bottom: 10px;
 }
 
 .card-info p {
-  margin: 0;
+  color: #334a82;
   font-size: 14px;
-  font-weight: 500;
+  line-height: 1.6;
+  max-width: 600px;
 }
 
 .card-action {
-  text-align: right;
+  flex-shrink: 0;
 }
 
 .btn-daftar {
-  background: #b9f6ca;
-  color: #004d00;
-  font-weight: 600;
-  padding: 8px 20px;
-  border-radius: 12px;
+  display: inline-block;
   text-decoration: none;
-  transition: all 0.3s ease;
+  background: #001b7b;
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 30px;
+  font-weight: 700;
+  transition: all 0.25s ease;
 }
 
 .btn-daftar:hover {
-  background: #69f0ae;
+  background: #b8ff3c;
+  color: #001a6b;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(184, 255, 60, 0.3);
 }
 
-
+/* ===== RESPONSIVE ===== */
+@media (max-width: 992px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+  .hero-image {
+    text-align: center;
+    margin-top: 40px;
+  }
+  .card-lowongan {
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
+  }
+}

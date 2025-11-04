@@ -7,6 +7,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('assets/css/dashboard.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/css/lowonganList.css') }}">
+   <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ asset('assets/images/viel.png') }}">
 </head>
 <body>
   <!-- Sidebar -->
@@ -52,7 +54,6 @@
                 <td>{{ ucfirst($polisi->status) }}</td>
                 <td>
                   <div class="actions">
-                    <a href="{{ route('polisi.show', $polisi->id) }}" class="btn btn-view">Lihat</a>
                     <a href="{{ route('polisi.verify', $polisi->id) }}" class="btn btn-verify">Verifikasi</a>
                     <form action="{{ route('polisi.destroy', $polisi->id) }}" method="POST" style="display:inline;">
                       @csrf

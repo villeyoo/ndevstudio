@@ -1,124 +1,383 @@
-/* Styling untuk Label */
-label {
-    font-size: 1rem;          /* Ukuran font label */
-    font-weight: bold;        /* Membuat font label menjadi tebal */
-    margin-bottom: 8px;       /* Memberikan jarak antara label dan input */
-      font-family: 'Poppins';
-    display: block;           /* Membuat label menjadi block element */
-    color: #333;              /* Warna teks label */
+/* ===== cekstatus.css - Ndev Studio theme ===== */
+:root{
+  --blue-900: #00123d;
+  --blue-800: #001b66;
+  --accent: #b8ff3c;
+  --white: #ffffff;
+  --muted: rgba(255,255,255,0.8);
 }
 
-/* Styling untuk Input */
-input[type="text"] {
-    width: 100%;              /* Lebar penuh untuk input */
-    padding: 10px;            /* Memberikan padding di dalam input */
-    margin-bottom: 15px;      /* Memberikan jarak antara input dan tombol */
-    border-radius: 5px;       /* Menambahkan border radius untuk sudut melengkung */
-    font-family: 'Poppins';
-    border: 1px solid #ccc;   /* Warna border yang lebih soft */
-    font-size: 1rem;          /* Ukuran font di dalam input */
+/* Reset kecil */
+*{ box-sizing: border-box; }
+body{
+  margin:0;
+  font-family: "Plus Jakarta Sans";
+  background: linear-gradient(180deg, #000d42 0%, #001a66 45%, #001c80 100%);
+  color: var(--white);
+  -webkit-font-smoothing:antialiased;
 }
 
-/* Styling untuk Button */
-button[type="submit"] {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-      font-family: 'Poppins';
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s;
+/* ===== NAVBAR (capsule centered) ===== */
+.navbar{
+  position: fixed;
+  top: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  width: auto;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 
-button[type="submit"]:hover {
-    background-color: #0056b3;
-}
-/* Styling untuk Status Result */
-.status-container {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    margin: 20px auto;
-}
-
-.status-container h3 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 20px;
+.nav-inner{
+  background: #fff;
+  border-radius: 60px;
+  padding: 14px 40px;
+  display:flex;
+  align-items:center;
+  gap: 34px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+  width: min(1100px, 96%);
+  transition: box-shadow .28s ease, backdrop-filter .28s ease;
 }
 
-.status-container label {
-    font-size: 1rem;
-    font-weight: bold;
-    margin-bottom: 8px;
-    display: block;
-    color: #333;
+.navbar.scrolled .nav-inner{
+  box-shadow: 0 12px 36px rgba(0,0,0,0.18);
+  backdrop-filter: blur(6px);
 }
 
-.status-container input {
+.logo{ font-weight:700; color:#0a1637; font-size:1.05rem; }
+
+/* nav links */
+.nav-links{
+  list-style:none;
+  display:flex;
+  gap: 26px;
+  margin:0;
+  padding:0;
+  align-items:center;
+}
+
+.nav-links li a{
+  text-decoration:none;
+  color:#0a1637;
+  font-weight:600;
+  transition: color .18s ease;
+}
+
+.nav-links li a:hover{ color:var(--blue-800); }
+
+/* Login button style */
+.btn-nav{
+  border:2px solid var(--blue-800);
+  color: var(--blue-800);
+  padding:8px 18px;
+  border-radius:28px;
+  font-weight:700;
+  background:transparent;
+}
+.btn-nav:hover{ background:var(--blue-800); color:var(--white); transform:translateY(-2px); }
+
+/* mobile toggle */
+.menu-toggle{ display:none; font-size:1.6rem; cursor:pointer; color:#0a1637; }
+
+/* ===== HERO (card inside) ===== */
+.hero{
+  padding: 120px 5% 60px;
+  display:flex;
+  justify-content:center;
+}
+
+.hero-card{
+  width: min(1200px, 98%);
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 28px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+  display:flex;
+  gap:32px;
+  padding:48px 56px;
+  align-items:center;
+}
+
+/* HERO SECTION */
+.hero {
+  padding: 140px 8% 100px;
+  display: flex;
+  justify-content: center;
+  color: #fff;
+}
+
+.hero-card {
+  background: linear-gradient(180deg, #001b6b 0%, #001357 100%);
+  border-radius: 30px;
+  padding: 80px 60px;
+  width: min(1100px, 96%);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+  text-align: center;
+}
+.input{
+    font-family: 'Plus Jakarta Sans';
+}
+
+.hero-content h1 {
+  font-size: 2.6rem;
+  font-weight: 800;
+  margin-bottom: 14px;
+}
+
+.hero-content p {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 28px;
+  font-family: 'Plus Jakarta Sans';
+}
+
+/* INLINE FORM DI DALAM HERO */
+.status-form-inline {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+}
+
+.status-form-inline input[type="text"] {
+  flex: 1;
+  min-width: 260px;
+  max-width: 420px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  color: #00163d;
+  background: #fff;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.25s ease;
+}
+
+.status-form-inline input:focus {
+  box-shadow: 0 0 0 3px #b8ff3c;
+}
+
+/* Tombol */
+.btn.primary {
+  background: #fff;
+  color: #001a6b;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.btn.primary:hover {
+  background: #b8ff3c;
+  color: #00163d;
+  transform: translateY(-3px);
+}
+
+/* Tombol Kembali */
+.btn-wrapper {
+  margin-top: 16px;
+}
+
+.btn.small {
+  background: #fff;
+  color: #001b66;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+.btn-primary{
+    font-family: 'Plus Jakarta Sans';
+}
+
+.btn.small:hover {
+  background: #b8ff3c;
+  color: #001a6b;
+}
+
+/* Status Message */
+.status-msg {
+  margin-top: 18px;
+  font-weight: 700;
+  border-radius: 10px;
+  padding: 12px 16px;
+  display: inline-block;
+}
+
+.status-msg.error {
+  background: #ffefef;
+  color: #7a1212;
+  border: 1px solid #ffbcbc;
+}
+
+.status-msg.result.diterima {
+  background: linear-gradient(90deg, #1fb472, #12a65f);
+  color: #fff;
+}
+.status-msg.result.ditolak {
+  background: linear-gradient(90deg, #ff5b6a, #ff3b58);
+  color: #fff;
+}
+.status-msg.result.pending {
+  background: linear-gradient(90deg, #f8d66c, #e7b800);
+  color: #00163d;
+}
+
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero-card {
+    padding: 50px 30px;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .status-form-inline {
+    flex-direction: column;
+  }
+
+  .status-form-inline input[type="text"],
+  .btn.primary {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 1rem;
+  }
 }
 
-/* Styling untuk Button */
-.btn-confirm {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+
+/* hero content left */
+.hero-content{
+  flex:1;
+  max-width: 640px;
+  color: var(--white);
 }
 
-.btn-confirm:hover {
-    background-color: #0056b3;
+.hero-content h1{
+  font-size: 2.6rem;
+  line-height:1.08;
+  margin:0 0 14px 0;
+  font-weight:800;
+  color: #fff;
 }
 
-/* Card Pengumuman */
-.announcement-container {
-    padding: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin-top: 30px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 70%;
-    margin: 20px auto;
+.hero-content p{
+  color: rgba(255,255,255,0.82);
+  margin-bottom:20px;
+  max-width:520px;
 }
 
-.announcement-container h3 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 15px;
+/* small CTA in hero */
+.btn-wrapper .btn{
+  display:inline-block;
+  background: #fff;
+  color: var(--blue-800);
+  padding:12px 26px;
+  border-radius:28px;
+  font-weight:700;
+  text-decoration:none;
+  transition:all .22s ease;
+  box-shadow:0 8px 22px rgba(0,0,0,0.18);
+}
+.btn-wrapper .btn.small{ padding:8px 18px; font-size:0.95rem; }
+
+/* hero image */
+.hero-image{ flex: 0 0 260px; display:flex; justify-content:center; align-items:center; }
+.hero-image img{ width:240px; animation: float 4s ease-in-out infinite; }
+
+/* ===== Status Section (form card) ===== */
+.status-section{ display:flex; justify-content:center; padding:40px 20px 80px; }
+
+.status-card{
+  width: min(760px, 96%);
+  background: #fff;
+  color: #00163d;
+  border-radius: 14px;
+  padding: 28px;
+  box-shadow: 0 12px 36px rgba(2,10,40,0.18);
+  text-align:left;
 }
 
-/* Pending Status */
-.announcement-container.pending {
-    background-color: #f9e06e;
-    color: #856404;
-    border: 1px solid #e2c64d;
+.status-card h3{ margin:0 0 10px 0; font-size:1.25rem; color:#00163d; }
+.status-card label{ display:block; margin-top:12px; font-weight:700; color:#00163d; }
+.status-card input[type="text"]{
+  width:100%;
+  padding:12px 14px;
+  border-radius:10px;
+  border:1px solid rgba(0,0,0,0.08);
+  margin-top:8px;
+  font-size:14px;
+  color:#00163d;
 }
 
-/* Accepted Status */
-.announcement-container.accepted {
-    background-color: #d4edda;
-    color: #155724;
-    border: 1px solid #28a745;
+/* actions */
+.form-actions{ margin-top:18px; display:flex; gap:12px; align-items:center; }
+.btn.primary{
+  background: var(--blue-800);
+  color: #fff;
+  padding:10px 18px;
+  border-radius:10px;
+  font-weight:700;
+  border:none;
+  cursor:pointer;
+}
+.btn.primary:hover{ background:#002fb1; transform:translateY(-2px); }
+
+/* error alert */
+.alert-error{
+  background: #ffefef;
+  color:#7a1212;
+  border:1px solid #ffbcbc;
+  padding:10px 12px;
+  border-radius:8px;
+  margin-top:10px;
 }
 
-/* Rejected Status */
-.announcement-container.rejected {
-    background-color: #f8d7da;
-    color: #721c24;
-    border: 1px solid #dc3545;
+/* ===== Status result styles ===== */
+.status-result{
+  margin-top:18px;
+  padding:14px 16px;
+  border-radius:10px;
+  font-weight:700;
+  color:#fff;
+}
+
+.status-result.diterima{ background: linear-gradient(90deg, #1fb472, #12a65f); }
+.status-result.ditolak{ background: linear-gradient(90deg, #ff5b6a, #ff3b58); }
+.status-result.pending{ background: linear-gradient(90deg, #f8d66c, #e7b800); color:#00163d; }
+
+/* ===== Announcement card ===== */
+.announcement{ display:flex; justify-content:center; padding:20px; }
+.announcement-card{
+  width: min(760px, 96%);
+  padding:20px 22px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.03);
+  color: #fff;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+.announcement-card h4{ margin:0 0 6px 0; font-size:1.05rem; }
+.announcement-card p{ margin:6px 0 0 0; color:rgba(255,255,255,0.9); }
+
+/* responsive */
+@media (max-width: 880px){
+  .nav-inner{ padding:12px 18px; width: calc(100% - 40px); }
+  .menu-toggle{ display:block; }
+  .nav-links{ display:none; position:absolute; top:68px; right:12px; background:#fff; padding:10px 12px; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.12); flex-direction:column; min-width:180px; }
+  .nav-links.show{ display:flex; }
+  .nav-links li a{ color:#00163d; padding:8px 10px; display:block; }
+  .hero-card{ padding:28px; flex-direction:column; text-align:center; gap:18px; }
+  .hero-image{ order:2; }
+  .hero-content{ order:1; }
+  .hero-content h1{ font-size:1.8rem; }
 }

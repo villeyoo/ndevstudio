@@ -15,26 +15,28 @@ class AuthController extends Controller
     }
 
     // Proses login
-    public function login(Request $request)
-    {
-        // Validasi input
-        $request->validate([
-            'username' => 'required|string',
-            'password' => 'required|string',
-        ]);
+public function login(Request $request)
+{
+    $request->validate([
+        'username' => 'required|string',
+        'password' => 'required|string',
+    ]);
 
-        // Mencari pengguna berdasarkan username
-        $user = CustomUser::where('username', $request->username)->first();
+    $user = \App\Models\CustomUser::where('username', $request->username)->first();
 
-        // Verifikasi password
-        if ($user && Hash::check($request->password, $user->password)) {
-            // Login pengguna
-            Auth::login($user);  // Menggunakan Auth::login langsung
-            return redirect()->route('dashboard')->with('success', 'Login berhasil!');
-        }
+    if ($user && \Illuminate\Support\Facades\Hash::check($request->password, $user->password)) {
+        \Illuminate\Support\Facades\Auth::login($user);
 
-        return back()->withErrors(['username' => 'Username atau password salah.'])->withInput();
+        // INTI-NYA DI SINI:
+        return $user->role === 'owner'
+            ? redirect()->route('dashboard')
+            : redirect()->route('dashboardAdmin'); // anggap selain owner = admin
     }
+
+    return back()->withErrors(['username' => 'Username atau password salah.'])->withInput();
+}
+
+
 
     // Logout
     public function logout()

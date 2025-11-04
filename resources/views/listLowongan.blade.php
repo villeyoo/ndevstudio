@@ -9,6 +9,8 @@
   <!-- CSS -->
   <link rel="stylesheet" href="{{ asset('assets/css/dashboard.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/css/lowonganList.css') }}">
+   <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ asset('assets/images/viel.png') }}">
 </head>
 <body>
   <!-- Sidebar -->
@@ -50,26 +52,27 @@
             </tr>
           </thead>
           <tbody>
-            @foreach($lowongans as $lowongan)
-              <tr>
-                <td>{{ $lowongan->id }}</td>
-                <td>{{ $lowongan->judul }}</td>
-                <td>{{ $lowongan->mulai }}</td>
-                <td>{{ $lowongan->selesai }}</td>
-                <td>{{ Str::limit($lowongan->deskripsi, 50) }}</td>
-                <td>
-                  <div class="actions">
-                    <a href="{{ route('lowongan.edit', $lowongan->id) }}" class="btn btn-edit">Edit</a>
-                    <form action="{{ route('lowongan.destroy', $lowongan->id) }}" method="POST" style="display:inline;">
-                      @csrf
-                      @method('DELETE')
-                      <button type="submit" class="btn btn-delete" onclick="return confirm('Yakin ingin hapus?')">Delete</button>
-                    </form>
-                  </div>
-                </td>
-              </tr>
-            @endforeach
-          </tbody>
+  @foreach($lowongans as $lowongan)
+    <tr>
+      <td data-label="ID">{{ $lowongan->id }}</td>
+      <td data-label="Judul">{{ $lowongan->judul }}</td>
+      <td data-label="Mulai">{{ $lowongan->mulai }}</td>
+      <td data-label="Selesai">{{ $lowongan->selesai }}</td>
+      <td data-label="Deskripsi">{{ Str::limit($lowongan->deskripsi, 50) }}</td>
+      <td data-label="Aksi">
+        <div class="actions">
+          <a href="{{ route('lowongan.edit', $lowongan->id) }}" class="btn btn-edit">Edit</a>
+          <form action="{{ route('lowongan.destroy', $lowongan->id) }}" method="POST" style="display:inline;">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-delete" onclick="return confirm('Yakin ingin hapus?')">Delete</button>
+          </form>
+        </div>
+      </td>
+    </tr>
+  @endforeach
+</tbody>
+
         </table>
 
       </div>
