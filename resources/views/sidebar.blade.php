@@ -49,6 +49,11 @@
       <span>Polisi</span>
     </a></li>
 
+     <li><a href="{{ route('submissions.index') }}" class="menu-item">
+      <i class="fa-solid fa-shield-halved"></i>
+      <span>Event Desa</span>
+    </a></li>
+
     <li><a href="{{ route('content-creator.index') }}" class="menu-item">
       <i class="fa-solid fa-user-pen"></i>
       <span>Content Creator</span>

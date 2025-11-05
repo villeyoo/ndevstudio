@@ -11,6 +11,10 @@ use App\Http\Controllers\StatusController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BugController;
 use App\Http\Controllers\RobuxController;
+use App\Http\Controllers\HalamanController;
+use App\Http\Controllers\FormController;
+use App\Http\Controllers\SubmissionController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -22,10 +26,15 @@ use App\Http\Controllers\RobuxController;
 Route::get('/', fn() => view('home'));
 Route::get('/cekstatus', fn() => view('cek-status'));
 Route::get('/hire', [LowonganController::class, 'index'])->name('hire.index');
+Route::get('/desaindo', [HalamanController::class, 'about'])->name('about');
+
 
 // Form daftar umum
 Route::get('/daftar/form', [DaftarController::class, 'index'])->name('daftar.form');
 Route::post('/daftar/submit', [DaftarController::class, 'submit'])->name('daftar.submit');
+
+Route::post('/submit-form', [FormController::class, 'store'])->name('submit.form');
+
 
 // Cek status pelamar
 Route::get('/cek-status', [StatusController::class, 'showForm'])->name('cek-status.form');
@@ -80,6 +89,10 @@ Route::middleware(['auth', 'role:owner'])->group(function () {
         Route::put('/lowongan/{id}', [LowonganController::class, 'update'])->name('lowongan.update');
         Route::delete('/lowongan/{id}', [LowonganController::class, 'destroy'])->name('lowongan.destroy');
     });
+
+    // -- event
+    Route::get('/submissions', [SubmissionController::class, 'index'])->name('submissions.index');
+Route::delete('/submissions/{id}', [SubmissionController::class, 'destroy'])->name('submissions.destroy');
 
     // --- Content Creator Management (OWNER DASHBOARD) ---
     Route::get('/content-creator', [ContentController::class, 'index'])->name('content-creator.index');

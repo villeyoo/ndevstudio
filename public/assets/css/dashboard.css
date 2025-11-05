@@ -162,40 +162,89 @@ body {
 .hamburger:hover {
   background: rgba(0, 30, 100, 0.95);
 }
-
-/* ===== Responsive Mode ===== */
+/* ===== MOBILE SIDEBAR FIX ===== */
 @media (max-width: 768px) {
+  /* Hamburger muncul di kanan atas */
   .hamburger {
-    display: flex; /* muncul hanya di mobile/tablet */
+    display: flex;
     align-items: center;
     gap: 6px;
+    position: fixed;
+    top: 18px;
+    right: 18px;
+    z-index: 1200;
+    background: rgba(0, 18, 61, 0.9);
+    color: #fff;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    font-weight: 600;
   }
 
+  /* Sidebar menutupi layar penuh di mobile */
   .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 260px;
     transform: translateX(-100%);
+    background: linear-gradient(180deg, #01206e 0%, #00123d 100%);
+    z-index: 1100;
+    transition: transform 0.35s ease;
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.25);
   }
 
+  /* Saat aktif */
   .sidebar.active {
     transform: translateX(0);
   }
 
-  .close-btn {
-    display: block;
+  /* Overlay gelap di belakang sidebar */
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 1090;
   }
 
+  .overlay.show {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  /* Kunci scroll saat sidebar terbuka */
+  body.sidebar-open {
+    overflow: hidden;
+  }
+
+  /* Main content agar tidak tertutup penuh */
   .main {
     margin-left: 0;
+    padding: 24px 20px;
+  }
+
+  .close-btn {
+    display: block;
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    font-size: 22px;
+    background: transparent;
+    color: #fff;
+    border: none;
+    cursor: pointer;
   }
 }
-.close-btn {
-  display: none;
-  background: transparent;
-  border: none;
-  color: #fff;
-  font-size: 22px;
-  cursor: pointer;
-}
-
 /* ===== Main Area ===== */
 .main {
   margin-left: 260px;

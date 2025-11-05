@@ -21,7 +21,7 @@
             <div class="logo"><span>Ndev Studio.</span></div>
             <div class="menu-toggle" id="menu-toggle">☰</div>
             <ul class="nav-links" id="nav-links">
-                <li><a href="#">Home</a></li>
+                <li><a href="/">Home</a></li>
                 <li><a href="#komunitas">Komunitas</a></li>
                 <li><a href="#project">Project</a></li>
                   <li><a href="#collab">Collab</a></li>
@@ -29,85 +29,58 @@
             </ul>
         </div>
         </nav>
+            <div class="ndev-ct-hero">
+  <p class="ndev-ct-rating">EVENT <strong>BELOM DI MULAI!</strong></p>
 
+  <h1 class="ndev-ct-getin">
+    <span class="ndev-ct-left">EVENT</span>
+    <span class="ndev-ct-right">DESA INDO.</span>
+  </h1>
 
-            <div class="hero-content">
-                <p class="rating">From Code<b>To</b> Adventure.</p>
-                <h1 class="hero-title">
-                    Helooo<br>
-                    <span class="highlight">Sugeng Rawuh</span> Di Ndev Studio!.
-                </h1>
-                <p class="subtext">
-                 Menciptakan <b>game kecil</b> dengan suasana santai dan cerita yang dekat.
-                </p>
-                <div class="hero-buttons">
-                    <a href="#desaindo" class="btn-primary">Event Desa Indo.</a>
-                    <a href="{{ url('/hire') }}" class="btn-secondary">Request/Daftar</a>
-                </div>
-            </div>
-        </div>
+  <p class="ndev-ct-sub small">
+    Ayo tunjukan kreativitas mu!
+  </p> 
+@if(session('success'))
+  <div class="alert alert-success">
+    {{ session('success') }}
+  </div>
+@endif
+
+@if ($errors->any())
+  <div class="alert alert-danger">
+      <ul>
+          @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+          @endforeach
+      </ul>
+  </div>
+@endif
+
+  <div class="ndev-ct-card">
+  <form id="ndev-ct-form" class="ndev-ct-form" method="POST" action="{{ route('submit.form') }}">
+    @csrf
+    <div class="ndev-ct-row">
+      <label for="ndev-ct-discord" class="ndev-ct-label">Discord Username</label>
+      <input class="gayane" id="ndev-ct-discord" name="discord_username" type="text" placeholder="username#1234" required>
     </div>
 
-<section id="komunitas" class="features-section">
-  <div class="container">
-    <div class="features-left">
-      <span class="badge">JOIN KOMUNITAS</span>
-      <h2 class="feature-title">AYO NGOBROL BARENG.<br><span>DI <em>DISCORD</em>.</span></h2>
-      <div class="rating-line">
-        <div class="stars"></div>
-        <div class="rating-text">2588 <strong></strong> MEMBERS.</div>
-      </div>
+    <div class="ndev-ct-row">
+      <label for="ndev-ct-video" class="ndev-ct-label">Link Video</label>
+      <input class="gayane" id="ndev-ct-video" name="video_link" type="url" placeholder="https://tiktok/..." required>
+    </div>
 
-    <div class="feature-buttons">
-  <button class="feature-item active">
-    <a href="https://discord.gg/your-server-invite" class="feature-item active" target="_blank" rel="noopener">
-  SERVER &amp; DISCORD BARU [COOMING SOON] <span class="arrow">→</span>
-</a>
+    <button type="submit" class="ndev-ct-submit">SUBMIT</button>
 
-  </button>
+    <p class="ndev-ct-note">Dengan mengirim, Anda setuju pada <a href="#">Terms &amp; Conditions</a>.</p>
+  </form>
 </div>
 
-    </div>
-
-    <div class="features-right">
-      <div class="image-card">
-        <!-- Ganti src sesuai lokasi gambarmu, contoh: /assets/images/revenue.png -->
-        <img src="{{ asset('assets/images/desa.png') }}" alt="Revenue preview" class="feature-image">
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="project" class="cases-section">
-  <div class="container narrow">
-    <div class="cases-header">
-      <span class="badge">PROJECT</span>
-      <h2 class="cases-title">Project Kami<br>Lihat Disini.</h2>
-    </div>
-
-    <div class="cases-grid">
-      <div class="case-card">
-        <div class="case-image-wrap">
-          <img src="{{ asset('assets/images/ndev.png') }}" alt="Case study 1 preview" class="case-image">
+</div>
         </div>
-        <h3 class="case-headline">DESA INDO.</h3>
-        <p class="case-desc">Nikmati pengalaman hidup di desa:
-Bangun pertemanan baru, lakukan aktivitas sehari-hari, dan jelajahi lingkungan yang terinspirasi dari budaya Nusantara. Setiap sudut desa menyimpan cerita — dan kamu yang menentukan arah ceritanya!
-.</p>
-      </div>
-
-      <div class="case-card">
-        <div class="case-image-wrap">
-          <img src="{{ asset('assets/images/ndevv.png') }}" alt="Case study 2 preview" class="case-image">
-        </div>
-        <h3 class="case-headline">Cooming Soon</h3>
-        <p class="case-desc"></p>
-      </div>
     </div>
-  </div>
-</section>
 
-<section id="desaindo" class="benefits-section">
+<!-- section -->
+ <section id="desaindo" class="benefits-section">
   <div class="container narrow">
     <div class="benefits-header">
       <span class="badge">EVENT DESA INDO</span>
@@ -201,12 +174,9 @@ Bangun pertemanan baru, lakukan aktivitas sehari-hari, dan jelajahi lingkungan y
 
 
 
-    <div class="benefits-button">
-      <a href="{{ route('about') }}" class="btn-primary">Join Event</a>
-    </div>
+    
   </div>
 </section>
-
 
 
 <footer id="collab" class="footer">
