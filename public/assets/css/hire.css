@@ -1,60 +1,97 @@
-/* ===== BASE ===== */
+/* =========================
+   homepage.css (updated)
+   - Responsive fixes
+   - Accessibility improvements
+   - Keeps original class names (no HTML changes)
+   ========================= */
+
+/* ---------- variables ---------- */
+:root{
+  --bg-top: #000d42;
+  --bg-mid: #001a66;
+  --bg-end: #001c80;
+  --accent: #b8ff3c;
+  --white: #ffffff;
+  --nav-height: 72px;
+  --max-width: 1100px;
+  --container-pad: 10%;
+  --glass-shadow: 0 8px 28px rgba(0,0,0,0.18);
+  --transition-fast: 0.18s;
+  --focus-ring: 3px rgba(184,255,60,0.14);
+}
+
+/* ---------- Base ---------- */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "Plus Jakarta Sans", "Poppins", sans-serif;
+  font-family: "Plus Jakarta Sans", "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html, body {
+  height: 100%;
 }
 
 body {
-  background: linear-gradient(180deg, #000d42 0%, #001a66 40%, #001c80 100%);
-  color: #fff;
+  background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-mid) 40%, var(--bg-end) 100%);
+  color: var(--white);
   min-height: 100vh;
   overflow-x: hidden;
+  -webkit-font-smoothing:antialiased;
 }
-/* ===== NAVBAR (same as homepage) ===== */
+
+/* Make images and media not overflow */
+img, picture, video, iframe { max-width: 100%; height: auto; display: block; }
+
+/* ---------- NAVBAR (capsule centered) ---------- */
 .navbar {
   position: fixed;
-  top: 40px;
+  top: 20px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 999;
+  width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
-  width: auto;
+  pointer-events: none; /* prevent navbar from blocking underlying clicks; inner handles events */
 }
 
 .nav-inner {
-  background: white;
+  pointer-events: auto;
+  background: #fff;
   border-radius: 60px;
-  padding: 16px 48px;
+  padding: 12px 28px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 40px;
+  gap: 28px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
   position: relative;
-  transition: all 0.3s ease;
+  width: min(var(--max-width), 96%);
+  transition: all var(--transition-fast) ease;
 }
 
+/* Slightly deeper shadow when scrolled (if JS toggles .scrolled) */
 .navbar.scrolled .nav-inner {
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 }
 
 /* Logo */
 .logo {
   font-weight: 700;
-  font-size: 1.1rem;
-  color: black;
+  font-size: 1.05rem;
+  color: #00163d;
+  white-space: nowrap;
 }
 
-/* Links */
+/* Nav links */
 .nav-links {
   list-style: none;
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 24px;
   margin: 0;
   padding: 0;
 }
@@ -62,13 +99,16 @@ body {
 .nav-links li a {
   text-decoration: none;
   font-weight: 600;
-  color: black;
+  color: #00163d;
   font-size: 0.95rem;
-  transition: all 0.2s ease;
+  transition: color var(--transition-fast) ease, transform var(--transition-fast) ease;
 }
 
-.nav-links li a:hover {
+.nav-links li a:hover,
+.nav-links li a:focus {
   color: #002fb1;
+  transform: translateY(-2px);
+  outline: none;
 }
 
 /* Login Button */
@@ -78,40 +118,55 @@ body {
   padding: 8px 20px;
   color: #002fb1;
   font-weight: 700;
-  transition: all 0.25s ease;
-  box-shadow: 0 3px 6px rgba(0, 47, 177, 0.15);
+  transition: all var(--transition-fast) ease;
+  box-shadow: 0 3px 6px rgba(0, 47, 177, 0.12);
+  background: #fff;
 }
 
-.btn-nav:hover {
+.btn-nav:hover,
+.btn-nav:focus {
   background: #002fb1;
-  color: white;
-  box-shadow: 0 5px 15px rgba(0, 47, 177, 0.25);
-  transform: translateY(-2px);
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 47, 177, 0.18);
+  outline: none;
 }
 
-/* Responsive */
+/* menu-toggle (hamburger) */
 .menu-toggle {
   display: none;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   cursor: pointer;
+  background: transparent;
+  border: none;
+  color: #00163d;
+  padding: 4px 6px;
 }
 
+/* Nav links mobile dropdown */
 @media (max-width: 768px) {
   .menu-toggle {
-    display: block;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
   }
 
   .nav-links {
     display: none;
     flex-direction: column;
     position: absolute;
-    top: 70px;
-    right: 0;
-    background: white;
-    border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    width: 200px;
-    padding: 20px 0;
+    top: calc(100% + 12px);
+    right: 14px;
+    background: #fff;
+    color: #00163d;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    width: 220px;
+    padding: 12px 8px;
+    z-index: 1000;
+    max-height: 60vh;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .nav-links.show {
@@ -119,65 +174,80 @@ body {
   }
 
   .nav-links li a {
-    padding: 10px 0;
+    padding: 10px 12px;
+    display: block;
     color: #00163d;
   }
 }
 
-/* ===== HERO SECTION ===== */
+/* ---------- HERO ---------- */
 .hero {
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  padding: 160px 10% 80px;
-  color: #fff;
+  padding: 140px var(--container-pad) 60px;
+  gap: 24px;
+  width: 100%;
 }
 
 .hero-content {
-  flex: 1;
-  min-width: 300px;
-  max-width: 550px;
+  flex: 1 1 400px;
+  min-width: 260px;
+  max-width: 620px;
+  text-align: left;
 }
 
 .hero-content h1 {
   font-size: 2.6rem;
   font-weight: 800;
-  line-height: 1.2;
-  margin-bottom: 16px;
+  line-height: 1.12;
+  margin-bottom: 12px;
+  color: var(--white);
+  word-break: break-word;
 }
 
 .hero-content p {
   font-size: 1rem;
-  color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 26px;
+  color: rgba(255,255,255,0.86);
+  margin-bottom: 20px;
+  max-width: 680px;
 }
 
+/* button group wrapper */
 .btn-wrapper .btn {
   background: #fff;
   color: #002fb1;
   font-weight: 700;
   text-decoration: none;
   border-radius: 30px;
-  padding: 12px 28px;
+  padding: 12px 26px;
   display: inline-block;
-  transition: all 0.25s ease;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  transition: all var(--transition-fast) ease;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  min-height: 44px;
+  line-height: 1;
 }
 
-.btn-wrapper .btn:hover {
-  background: #b8ff3c;
+.btn-wrapper .btn:hover,
+.btn-wrapper .btn:focus {
+  background: var(--accent);
   color: #001a6b;
   transform: translateY(-3px);
+  outline: none;
 }
 
+/* hero image */
 .hero-image {
-  flex: 1;
+  flex: 0 0 320px;
   text-align: right;
+  align-self: center;
 }
 
 .hero-image img {
   width: 260px;
+  max-width: 100%;
+  display: inline-block;
   animation: float 4s ease-in-out infinite;
 }
 
@@ -186,9 +256,9 @@ body {
   50% { transform: translateY(-12px); }
 }
 
-/* ===== SECTION POSISI TERSEDIA ===== */
+/* ---------- Section container (judul + cards) ---------- */
 .container {
-  max-width: 1100px;
+  max-width: var(--max-width);
   margin: 40px auto 100px;
   padding: 0 20px;
 }
@@ -197,8 +267,8 @@ body {
   text-align: center;
   font-size: 2rem;
   font-weight: 800;
-  color: #ffffff;
-  margin-bottom: 40px;
+  color: var(--white);
+  margin-bottom: 24px;
   position: relative;
 }
 
@@ -207,32 +277,39 @@ body {
   display: block;
   width: 60px;
   height: 4px;
-  background: #b8ff3c;
+  background: var(--accent);
   margin: 12px auto 0;
   border-radius: 2px;
 }
 
-/* ===== CARD LOWONGAN ===== */
+/* ---------- Card Lowongan ---------- */
 .card-lowongan {
   background: #ffffff;
   color: #001a6b;
   border-radius: 20px;
-  padding: 30px;
-  margin-bottom: 24px;
+  padding: 26px;
+  margin-bottom: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  gap: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  transition: transform var(--transition-fast) ease, box-shadow var(--transition-fast) ease;
+  flex-wrap: nowrap;
 }
 
 .card-lowongan:hover {
   transform: translateY(-6px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12);
+}
+
+.card-info {
+  flex: 1 1 60%;
+  min-width: 200px;
 }
 
 .card-info h3 {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-weight: 700;
   margin-bottom: 6px;
   color: #001a6b;
@@ -242,20 +319,25 @@ body {
   font-size: 13px;
   color: #6879b2;
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .card-info p {
   color: #334a82;
   font-size: 14px;
   line-height: 1.6;
-  max-width: 600px;
+  max-width: 100%;
 }
 
 .card-action {
-  flex-shrink: 0;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: flex-end;
 }
 
+/* daftar button */
 .btn-daftar {
   display: inline-block;
   text-decoration: none;
@@ -264,29 +346,69 @@ body {
   padding: 10px 22px;
   border-radius: 30px;
   font-weight: 700;
-  transition: all 0.25s ease;
+  transition: all var(--transition-fast) ease;
+  min-height: 44px;
+  line-height: 1;
 }
 
-.btn-daftar:hover {
-  background: #b8ff3c;
+.btn-daftar:hover,
+.btn-daftar:focus {
+  background: var(--accent);
   color: #001a6b;
   transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(184, 255, 60, 0.3);
+  box-shadow: 0 8px 20px rgba(184, 255, 60, 0.18);
+  outline: none;
 }
 
-/* ===== RESPONSIVE ===== */
+/* ---------- Responsive rules ---------- */
+
+/* Medium screens: stack hero and adjust paddings */
 @media (max-width: 992px) {
   .hero {
     flex-direction: column;
     text-align: center;
+    padding: 120px 8% 48px;
   }
-  .hero-image {
-    text-align: center;
-    margin-top: 40px;
-  }
-  .card-lowongan {
-    flex-direction: column;
-    text-align: center;
-    gap: 16px;
-  }
+  .hero-content { order: 1; max-width: 720px; margin: 0 auto; width: 100%; }
+  .hero-image { order: 2; margin-top: 8px; text-align: center; }
+  .hero-image img { width: 200px; }
+  .nav-inner { padding: 10px 20px; width: calc(100% - 32px); }
+  .card-lowongan { flex-direction: column; text-align: center; gap: 14px; padding: 20px; }
+  .card-action { justify-content: center; width: 100%; }
+  .container { padding: 0 16px; }
+}
+
+/* Small phones: compact hero, bigger touch targets */
+@media (max-width: 720px) {
+  .hero { padding: 92px 6% 36px; gap: 12px; }
+  .hero-content h1 { font-size: 1.6rem; text-align: left; }
+  .hero-content { text-align: left; width: 100%; max-width: 100%; margin: 0; }
+  .btn-wrapper .btn { padding: 12px 18px; font-size: 14px; }
+  .hero-image img { width: 140px; }
+  .card-lowongan { padding: 16px; border-radius: 14px; }
+}
+
+/* Extra small devices */
+@media (max-width: 420px) {
+  .nav-inner { padding: 8px 12px; gap: 12px; width: calc(100% - 24px); }
+  .hero { padding: 80px 5% 28px; }
+  .hero-content h1 { font-size: 1.3rem; }
+  .card-info h3 { font-size: 1.05rem; }
+  .btn-daftar { padding: 10px 16px; font-size: 14px; }
+  .judul { font-size: 1.6rem; }
+}
+
+/* ---------- Accessibility & polish ---------- */
+.menu-toggle:focus,
+.btn-nav:focus,
+.btn-wrapper .btn:focus,
+.btn-daftar:focus,
+.menu-toggle:focus {
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08), 0 0 0 var(--focus-ring);
+  outline: none;
+}
+
+/* Respect reduced motion setting */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
