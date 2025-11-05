@@ -172,7 +172,7 @@ Bangun pertemanan baru, lakukan aktivitas sehari-hari, dan jelajahi lingkungan y
     <div class="benefit-content">
       <h3 class="benefit-heading">Hadiah</h3>
       <p>
-        Total hadiah sebesar <strong>Rp 1.500.000</strong> akan dibagikan kepada para pemenang dengan rincian sebagai berikut:
+        Total hadiah sebesar <strong>Rp 2.000.000</strong> akan dibagikan kepada para pemenang dengan rincian sebagai berikut:
         <ul>
           <li><strong>Juara 1:</strong> Rp 1.000.000</li>
           <li><strong>Juara 2:</strong> Rp 250.000 + 3.000 Robux</li>
