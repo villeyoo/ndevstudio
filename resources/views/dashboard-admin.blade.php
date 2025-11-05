@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard Admin - NDEV Studio</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+       <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('assets/css/dashboard.css') }}">
    <!-- Favicon -->
     <link rel="icon" type="image/png" href="{{ asset('assets/images/viel.png') }}">
@@ -18,6 +19,7 @@
     <!-- Navbar -->
     <header class="topbar">
       <h2>Dashboard</h2>
+      <p>System poin sedang dalam tahap pengembangan</p>
       <div class="profile">
         <img src="{{ asset('assets/images/viel.png') }}" alt="profile">
         <span>{{ Auth::user()->username }}</span>
@@ -88,13 +90,18 @@
           @endif
 
           <!-- Tombol hapus (tetap ada) -->
-          <form action="{{ route('bugs.delete', $bug->id) }}" method="POST" style="display:inline;">
-            @csrf
-            @method('DELETE')
-            <button type="submit" class="done" onclick="return confirm('Tandai selesai & hapus?')">
-              Selesai
-            </button>
-          </form>
+         <!-- Tombol hapus hanya untuk role 'owner' -->
+@if(Auth::user()->role === 'owner')
+  <form action="{{ route('bugs.delete', $bug->id) }}" method="POST" style="display:inline;">
+    @csrf
+    @method('DELETE')
+    <button type="submit" class="done" onclick="return confirm('Tandai selesai & hapus?')">
+      Selesai
+    </button>
+  </form>
+@else
+  <span class="no-access">Not have access</span>
+@endif
         </div>
       </li>
     @empty
