@@ -175,8 +175,8 @@ Bangun pertemanan baru, lakukan aktivitas sehari-hari, dan jelajahi lingkungan y
         Total hadiah sebesar <strong>Rp 1.500.000</strong> akan dibagikan kepada para pemenang dengan rincian sebagai berikut:
         <ul>
           <li><strong>Juara 1:</strong> Rp 1.000.000</li>
-          <li><strong>Juara 2:</strong> 3.000 Robux</li>
-          <li><strong>Juara 3:</strong> 2.000 Robux</li>
+          <li><strong>Juara 2:</strong> Rp 250.000 + 3.000 Robux</li>
+          <li><strong>Juara 3:</strong> Rp 150.000 2.000 Robux</li>
           <li><strong>Juara Views Terbanyak:</strong> 1.000 Robux</li>
         </ul>
       </p>
