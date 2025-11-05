@@ -20,7 +20,10 @@
       <i class="fa-solid fa-plus"></i>
       <span>Exchange Robux</span>
     </a></li>
-
+ <li><a href="{{ route('robux.track') }}" class="menu-item">
+      <i class="fa-solid fa-plus"></i>
+      <span>Track Robux</span>
+    </a></li>
     <li><a href="{{ route('bug.index') }}" class="menu-item">
       <i class="fa-solid fa-bug"></i>
       <span>Tambah Bug</span>
