@@ -1,70 +1,50 @@
-/* ===========================
-   EVENT LIST PAGE — NDEV Studio
-   Responsive, clean, mobile-friendly table
-   =========================== */
-
 /* ===== BASE ===== */
-:root {
-  --bg-gradient-start: #001b7b;
-  --bg-gradient-end: #0034d1;
-  --white: #ffffff;
-  --text-blue: #001a6b;
-  --accent: #b8ff3c;
-  --danger: #ff4757;
-  --shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
-}
-
 * {
   box-sizing: border-box;
   font-family: "Plus Jakarta Sans", "Poppins", sans-serif;
   margin: 0;
   padding: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+  background: linear-gradient(135deg, #001b7b 0%, #0034d1 100%);
   min-height: 100vh;
-  color: var(--white);
-  overflow-x: hidden;
+  color: #fff;
 }
 
 /* ===== MAIN AREA ===== */
 .main {
   margin-left: 260px;
   padding: 40px;
-  transition: margin 0.3s ease, padding 0.3s ease;
 }
 
 /* ===== TABLE CONTAINER ===== */
 .table-container {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
   border-radius: 24px;
-  box-shadow: var(--shadow);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
   padding: 40px 30px;
-  color: var(--white);
+  color: #fff;
   animation: fadeIn 0.6s ease;
 }
 
 .table-container h3 {
   font-size: 1.6rem;
   font-weight: 700;
-  margin-bottom: 28px;
-  color: #ffffff;
+  margin-bottom: 24px;
+  color: #fff;
   text-align: center;
 }
 
 /* ===== ALERT ===== */
 .alert-success {
-  background: rgba(184, 255, 60, 0.18);
-  border: 1px solid var(--accent);
-  color: #dcff87;
+  background: rgba(184, 255, 60, 0.15);
+  border: 1px solid #b8ff3c;
+  color: #c9ff6a;
   padding: 12px 18px;
   border-radius: 10px;
-  margin-bottom: 22px;
+  margin-bottom: 20px;
   font-weight: 600;
   text-align: center;
 }
@@ -75,34 +55,33 @@ table {
   border-collapse: collapse;
   border-radius: 20px;
   overflow: hidden;
-  background: var(--white);
-  color: var(--text-blue);
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
-  text-align: left;
+  background: #fff;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  color: #001a6b;
 }
 
 thead {
-  background: var(--text-blue);
-  color: var(--white);
+  background: #001a6b;
+  color: #fff;
 }
 
 thead th {
   padding: 16px;
+  text-align: left;
   font-weight: 700;
-  font-size: 13.5px;
+  font-size: 14px;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
-  border-bottom: 2px solid rgba(255,255,255,0.1);
+  letter-spacing: 0.03em;
 }
 
 tbody tr {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   transition: all 0.2s ease;
 }
 
 tbody tr:hover {
   background: rgba(0, 27, 123, 0.05);
-  transform: translateY(-2px);
+  transform: scale(1.002);
 }
 
 tbody td {
@@ -116,8 +95,6 @@ tbody td {
 .actions {
   display: flex;
   gap: 10px;
-  justify-content: flex-start;
-  flex-wrap: wrap;
 }
 
 .btn {
@@ -128,44 +105,43 @@ tbody td {
   border: none;
   cursor: pointer;
   transition: all 0.25s ease;
-  min-height: 40px;
 }
 
-/* Edit (optional future use) */
+/* Edit button */
 .btn-edit {
-  background: var(--accent);
-  color: var(--text-blue);
-  border: 2px solid var(--accent);
+  background: #b8ff3c;
+  color: #00163d;
+  border: 2px solid #b8ff3c;
 }
 
 .btn-edit:hover {
-  background: #d6ff88;
+  background: #cfff7a;
   transform: translateY(-2px);
   box-shadow: 0 6px 15px rgba(184, 255, 60, 0.3);
 }
 
 /* Delete button */
 .btn-delete {
-  background: var(--danger);
-  color: #fff;
-  border: 2px solid var(--danger);
+  background: #ff4757;
+  color: white;
+  border: 2px solid #ff4757;
 }
 
 .btn-delete:hover {
   background: #ff6b81;
   transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(255, 107, 129, 0.25);
+  box-shadow: 0 6px 15px rgba(255, 107, 129, 0.3);
 }
 
 /* ===== RESPONSIVE TABLE ===== */
 @media (max-width: 992px) {
   .main {
     margin-left: 0;
-    padding: 24px 16px;
+    padding: 20px;
   }
 
   .table-container {
-    padding: 25px 18px;
+    padding: 25px 20px;
   }
 
   table,
@@ -182,12 +158,11 @@ tbody td {
   }
 
   tbody tr {
-    background: var(--white);
-    margin-bottom: 18px;
-    border-radius: 16px;
+    background: #fff;
+    margin-bottom: 20px;
+    border-radius: 15px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-    padding: 14px 16px;
-    color: var(--text-blue);
+    padding: 15px;
   }
 
   tbody td {
@@ -196,7 +171,6 @@ tbody td {
     padding: 10px 0;
     font-size: 14px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    word-break: break-word;
   }
 
   tbody td:last-child {
@@ -207,39 +181,11 @@ tbody td {
     content: attr(data-label);
     font-weight: 700;
     text-transform: capitalize;
-    color: var(--text-blue);
-    padding-right: 12px;
+    color: #001a6b;
   }
 
   .actions {
     justify-content: flex-end;
-    gap: 8px;
-  }
-
-  .btn {
-    flex: 1;
-    min-width: 90px;
-  }
-}
-
-/* ===== SMALL SCREENS ===== */
-@media (max-width: 480px) {
-  .table-container {
-    padding: 20px 14px;
-  }
-  .alert-success {
-    font-size: 13px;
-    padding: 10px 14px;
-  }
-  tbody tr {
-    padding: 12px;
-  }
-  tbody td {
-    font-size: 13px;
-  }
-  .btn {
-    padding: 8px 10px;
-    font-size: 13px;
   }
 }
 
@@ -252,18 +198,5 @@ tbody td {
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-/* ===== ACCESSIBILITY ===== */
-.btn:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(184,255,60,0.25), 0 6px 18px rgba(0,0,0,0.1);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  * {
-    transition: none !important;
-    animation: none !important;
   }
 }
