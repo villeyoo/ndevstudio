@@ -46,7 +46,7 @@
           WhatsApp <b>Admin</b>.
         </p>
         <div class="hero-buttons">
-          <a href="#robux" class="btn-primary">Hubungi Admin.</a>
+          <a href="https://api.whatsapp.com/send/?phone=6285117562717&text&type=phone_number&app_absent=0" class="btn-primary">Hubungi Admin.</a>
         </div>
       </div>
     </div>
