@@ -63,7 +63,6 @@
     function openSidebar() {
       sidebar.classList.add('active');
       overlay.classList.add('show');
-      document.body.classList.add('sidebar-open'); // ✅ nambahin body lock scroll
       hamburgerText.textContent = 'Back';
       hamburger.querySelector('i').classList.replace('fa-bars', 'fa-arrow-left');
     }
@@ -71,7 +70,6 @@
     function closeSidebar() {
       sidebar.classList.remove('active');
       overlay.classList.remove('show');
-      document.body.classList.remove('sidebar-open'); // ✅ hilangin lock scroll
       hamburgerText.textContent = 'Menu';
       hamburger.querySelector('i').classList.replace('fa-arrow-left', 'fa-bars');
     }
@@ -97,7 +95,7 @@
 
   .divider {
     border: none;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-top: 1px solid rgba(255,255,255,0.2);
     margin: 10px 0;
   }
 
@@ -117,7 +115,7 @@
 
   .menu-item:hover,
   .menu-item.active {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255,255,255,0.1);
     border-radius: 6px;
   }
 
@@ -144,29 +142,5 @@
   .logout-btn:hover {
     opacity: 0.9;
   }
-
-  .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 260px;
-    height: 100vh;
-    /* ✅ biar full tinggi layar */
-    background: #001c69;
-    color: #fff;
-    overflow-y: auto;
-    /* ✅ bikin sidebar bisa discroll ke bawah */
-    -webkit-overflow-scrolling: touch;
-    /* ✅ smooth scroll di HP */
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
-    z-index: 1000;
-    padding-bottom: 80px;
-    /* ✅ biar gak kejepit tombol logout */
-  }
-
-  /* Saat aktif (tombol Menu diklik) */
-  .sidebar.active {
-    transform: translateX(0);
-  }
+  
 </style>
