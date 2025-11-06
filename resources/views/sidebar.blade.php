@@ -95,7 +95,7 @@
 
   .divider {
     border: none;
-    border-top: 1px solid rgba(255,255,255,0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
     margin: 10px 0;
   }
 
@@ -115,7 +115,7 @@
 
   .menu-item:hover,
   .menu-item.active {
-    background: rgba(255,255,255,0.1);
+    background: rgba(255, 255, 255, 0.1);
     border-radius: 6px;
   }
 
@@ -141,5 +141,38 @@
 
   .logout-btn:hover {
     opacity: 0.9;
+  }
+
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 250px;
+    background: #001c69;
+    color: #fff;
+    overflow-y: auto;
+    /* ✅ penting biar bisa discroll */
+    -webkit-overflow-scrolling: touch;
+    /* ✅ smooth scroll di HP */
+    z-index: 1000;
+    transition: transform 0.3s ease;
+    transform: translateX(-100%);
+  }
+
+  .sidebar.active {
+    transform: translateX(0);
+  }
+
+  /* Biar body bisa tetap scroll halaman lain */
+  body {
+    overflow-x: hidden;
+  }
+
+  /* Untuk mobile biar tampilan rapet */
+  @media (max-width: 768px) {
+    .sidebar {
+      width: 80%;
+    }
   }
 </style>
