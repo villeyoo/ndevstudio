@@ -59,7 +59,7 @@
       <div class="values-inner">
         <div class="values-head">
           <span class="values-badge">HARGA ROBUX TERKINI!</span>
-          <h2 class="values-title">Ini adalah Harga Robux Instant.<br>Robux bisa berubah sewaktu waktu.</h2>
+          <h2 class="values-title"><br></h2>
         </div>
 
         @if($products->count() > 0)
