@@ -414,3 +414,12 @@ body {
   .sidebar.active { transform: translateX(0); }
   .close-btn { display: block; }
 }
+.alert-success {
+  background-color: #d1f7d1;
+  color: #1b5e20;
+  border: 1px solid #81c784;
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin-bottom: 16px;
+  font-weight: 600;
+}

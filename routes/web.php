@@ -14,6 +14,8 @@ use App\Http\Controllers\RobuxController;
 use App\Http\Controllers\HalamanController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\SubmissionController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\OrderController;
 
 
 /*
@@ -27,7 +29,14 @@ Route::get('/', fn() => view('home'));
 Route::get('/cekstatus', fn() => view('cek-status'));
 Route::get('/hire', [LowonganController::class, 'index'])->name('hire.index');
 Route::get('/desaindo', [HalamanController::class, 'about'])->name('about');
+Route::get('/robux', [HalamanController::class, 'robux'])->name('robux');
+Route::get('/success', [HalamanController::class, 'success'])->name('success');
 
+
+
+// Form beli Robux
+Route::get('/order/{id}', [OrderController::class, 'create'])->name('order.create');
+Route::post('/order', [OrderController::class, 'store'])->name('order.store');
 
 // Form daftar umum
 Route::get('/daftar/form', [DaftarController::class, 'index'])->name('daftar.form');
@@ -79,6 +88,7 @@ Route::middleware(['auth', 'role:owner'])->group(function () {
 
     // Dashboard Owner
     Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
+     Route::get('/dashboardStore', [AdminController::class, 'dashboardNdev'])->name('dashboardNdev');
 
     // --- Lowongan Management ---
     Route::prefix('dashboard')->group(function () {
@@ -92,7 +102,7 @@ Route::middleware(['auth', 'role:owner'])->group(function () {
 
     // -- event
     Route::get('/submissions', [SubmissionController::class, 'index'])->name('submissions.index');
-Route::delete('/submissions/{id}', [SubmissionController::class, 'destroy'])->name('submissions.destroy');
+    Route::delete('/submissions/{id}', [SubmissionController::class, 'destroy'])->name('submissions.destroy');
 
     // --- Content Creator Management (OWNER DASHBOARD) ---
     Route::get('/content-creator', [ContentController::class, 'index'])->name('content-creator.index');
@@ -126,6 +136,18 @@ Route::delete('/submissions/{id}', [SubmissionController::class, 'destroy'])->na
     Route::get('/robux/requests/{id}/verify', [RobuxController::class, 'verifyForm'])->name('robux.verifyForm');
     Route::put('/robux/requests/{id}/verify', [RobuxController::class, 'updateVerification'])->name('robux.updateVerification');
     Route::delete('/robux/requests/{id}', [RobuxController::class, 'destroy'])->name('robux.destroy');
+
+    // --- 
+
+    Route::get('/tambah-robux', [ProductController::class, 'create'])->name('product.create');
+    Route::post('/tambah-robux', [ProductController::class, 'store'])->name('product.store');
+
+    Route::get('/admin/robux', [ProductController::class, 'index'])->name('product.index');
+    Route::get('/admin/robux/{id}/edit', [ProductController::class, 'edit'])->name('product.edit');
+    Route::delete('/admin/robux/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
+    Route::resource('product', ProductController::class);
+    Route::get('/orders', [OrderController::class, 'index'])->name('order.index');
+    Route::delete('/order/{id}', [OrderController::class, 'destroy'])->name('order.destroy');
 });
 
 /*

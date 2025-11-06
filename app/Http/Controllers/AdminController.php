@@ -8,16 +8,19 @@ use App\Models\ContentCreator;
 use App\Models\Scripter;
 use App\Models\Polisi;
 use App\Models\Bug;   // ✅ Tambahkan model Bug
+use App\Models\Order;
 use Illuminate\Support\Facades\Storage;
+
 class AdminController extends Controller
 {
     public function index()
     {
         // Hitung total lowongan & pengajuan
         $totalLowongan      = Lowongan::count();
-        $totalContentCreator= ContentCreator::count();
+        $totalContentCreator = ContentCreator::count();
         $totalPolisi        = Polisi::count();
         $totalScripter      = Scripter::count();
+
 
         // ✅ Ambil daftar bug terbaru (misal 10 terakhir)
         $bugs = Bug::latest()->take(10)->get();
@@ -39,22 +42,22 @@ class AdminController extends Controller
     }
 
     public function adminIndex()
-{
+    {
 
-     $totalLowongan      = Lowongan::count();
-        $totalContentCreator= ContentCreator::count();
+        $totalLowongan      = Lowongan::count();
+        $totalContentCreator = ContentCreator::count();
         $totalPolisi        = Polisi::count();
         $totalScripter      = Scripter::count();
         $bugs = Bug::latest()->take(10)->get();
 
-    return view('dashboard-admin', compact(
+        return view('dashboard-admin', compact(
             'totalLowongan',
             'totalContentCreator',
             'totalPolisi',
             'totalScripter',
             'bugs'          // ✅ kirim ke view
         ));
-}
+    }
 
     public function showPolisi()
     {
@@ -68,19 +71,31 @@ class AdminController extends Controller
         return view('content-creator', compact('contentCreators'));
     }
 
- public function deleteBug($id)
-{
-    // Cari bug
-    $bug = Bug::findOrFail($id);
+    public function deleteBug($id)
+    {
+        // Cari bug
+        $bug = Bug::findOrFail($id);
 
-    // Jika ada file bukti dan file-nya benar-benar ada di storage
-    if ($bug->bukti && Storage::disk('public')->exists($bug->bukti)) {
-        Storage::disk('public')->delete($bug->bukti);
+        // Jika ada file bukti dan file-nya benar-benar ada di storage
+        if ($bug->bukti && Storage::disk('public')->exists($bug->bukti)) {
+            Storage::disk('public')->delete($bug->bukti);
+        }
+
+        // Hapus data bug dari database
+        $bug->delete();
+
+        return redirect()->back()->with('success', 'Bug dan file buktinya berhasil dihapus.');
     }
 
-    // Hapus data bug dari database
-    $bug->delete();
+    public function dashboardNdev()
+    {
+        // Hitung total lowongan & pengajuan
+        $pendingOrders = Order::where('status', 'pending')->count();
 
-    return redirect()->back()->with('success', 'Bug dan file buktinya berhasil dihapus.');
-}
+
+        // Kirim semua data ke view
+        return view('dashboardNdev', compact(
+            'pendingOrders'
+        ));
+    }
 }

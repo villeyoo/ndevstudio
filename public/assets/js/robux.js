@@ -49,22 +49,10 @@ window.addEventListener('scroll', () => {
 (function(){
   // Ubah daftar frasa di sini
   const phrases = [
-    "Selamat Datang",        // Indonesia
-    "Sugeng Rawuh",          // Jawa halus
-    "Wilujeng Sumping",      // Sunda
-    "Sampurasun",            // Sunda (sapaan sopan)
-    "Rahajeng Rauh",         // Bali
-    "Salam Satebben",        // Madura
-    "Horas!",                // Batak
-    "Tabea",                 // Manado
-    "Salam Minang",          // Minangkabau
-    "Welcome",               // Inggris
-    "Bienvenido",            // Spanyol (biar keren)
-    "Benvenuto",             // Italia
-    "Selamat Dateng Rek",    // Betawi santai
-    "Sugeng Rawuh Riko",     // Jawa timuran
-    "Sampurasun Baraya",     // Sunda akrab
-
+    "Beli",           // Indonesia
+    "Tuku",           // Jawa
+    "Meli",           // Bali
+    "Meuli",          // Sunda"
   ];
 
   const el = document.getElementById('rotatingText');
@@ -112,3 +100,38 @@ window.addEventListener('scroll', () => {
   el.addEventListener('mouseleave', ()=>{ paused = false; });
   // If you want to actually stop/show pause behavior, you'd need to clear and restart timers.
 })();
+
+function formatNumber(value) {
+    return value.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+  }
+
+  // --- Input Jumlah Robux ---
+  const titleInput = document.getElementById('title');
+  titleInput.addEventListener('input', function(e) {
+    let value = e.target.value.replace(/\D/g, ''); // hapus non-digit
+    if (value) {
+      e.target.value = formatNumber(value) + ' ROBUX';
+    } else {
+      e.target.value = '';
+    }
+  });
+
+  // --- Input Harga Robux ---
+  const priceInput = document.getElementById('price');
+  priceInput.addEventListener('input', function(e) {
+    let value = e.target.value.replace(/\D/g, ''); // hanya angka
+    if (value) {
+      e.target.value = 'Rp ' + formatNumber(value);
+    } else {
+      e.target.value = '';
+    }
+  });
+
+  // --- Bersihkan format saat form disubmit (supaya data bersih di DB) ---
+  const form = document.querySelector('form');
+  form.addEventListener('submit', function() {
+    titleInput.value = titleInput.value.replace(/\D/g, '');
+    priceInput.value = priceInput.value.replace(/\D/g, '');
+  });
+
+ 

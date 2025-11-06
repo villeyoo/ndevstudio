@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,9 +11,10 @@
   <!-- CSS -->
   <link rel="stylesheet" href="{{ asset('assets/css/dashboard.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/css/verifyRobux.css') }}">
-   <!-- Favicon -->
-    <link rel="icon" type="image/png" href="{{ asset('assets/images/viel.png') }}">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="{{ asset('assets/images/viel.png') }}">
 </head>
+
 <body>
   <div class="form-container">
     <h2>Verifikasi Permintaan Robux</h2>
@@ -36,4 +38,5 @@
     </form>
   </div>
 </body>
+
 </html>
