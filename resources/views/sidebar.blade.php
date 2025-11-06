@@ -165,10 +165,7 @@
   }
 
   /* Biar body bisa tetap scroll halaman lain */
-  body {
-    overflow-x: hidden;
-  }
-
+ 
   /* Untuk mobile biar tampilan rapet */
   @media (max-width: 768px) {
     .sidebar {
