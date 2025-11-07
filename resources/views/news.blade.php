@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NDEV STUDIO</title>
+  <title>NDEV STUDIO - NEWS</title>
   <link rel="icon" type="image/png" href="{{ asset('assets/images/viel.png') }}">
   <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
@@ -22,10 +22,10 @@
           <div class="logo"><span>Ndev Studio.</span></div>
           <div class="menu-toggle" id="menu-toggle">☰</div>
           <ul class="nav-links" id="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#komunitas">Komunitas</a></li>
-            <li><a href="#project">Project</a></li>
-            <li><a href="#collab">Berita</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/#komunitas">Komunitas</a></li>
+            <li><a href="/#project">Project</a></li>
+            <li><a href="#desaindo">Berita</a></li>
             <li><a href="#collab">Collab</a></li>
             <li><a href="/robux">Robux</a></li>
             <li><a href="{{ url('/login') }}" class="btn-nav">Login</a></li>
@@ -33,72 +33,38 @@
         </div>
       </nav>
       <div class="ndev-ct-hero">
-        <p class="ndev-ct-rating">EVENT <strong>SUDAH DI MULAI!</strong></p>
+        <p class="ndev-ct-rating">Berita <strong>Terbaru.</strong></p>
 
         <h1 class="ndev-ct-getin">
-          <span class="ndev-ct-left">EVENT</span>
-          <span class="ndev-ct-right">DESA INDO.</span>
+          <span class="ndev-ct-left">NDEV</span>
+          <span class="ndev-ct-right">STUDIO.</span>
         </h1>
 
         <p class="ndev-ct-sub small">
-          Ayo tunjukan kreativitas mu!
+          Scroll Kebawah!
         </p>
-        @if(session('success'))
-        <div class="alert alert-success">
-          {{ session('success') }}
-        </div>
-        @endif
-
-        @if ($errors->any())
-        <div class="alert alert-danger">
-          <ul>
-            @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-          </ul>
-        </div>
-        @endif
-
-        <div class="ndev-ct-card">
-          <form id="ndev-ct-form" class="ndev-ct-form" method="POST" action="{{ route('submit.form') }}">
-            @csrf
-            <div class="ndev-ct-row">
-              <label for="ndev-ct-discord" class="ndev-ct-label">Discord Username</label>
-              <input class="gayane" id="ndev-ct-discord" name="discord_username" type="text" placeholder="username#1234" required>
-            </div>
-
-            <div class="ndev-ct-row">
-              <label for="ndev-ct-video" class="ndev-ct-label">Link Video</label>
-              <input class="gayane" id="ndev-ct-video" name="video_link" type="url" placeholder="https://tiktok/..." required>
-            </div>
-
-            <button type="submit" class="ndev-ct-submit">SUBMIT</button>
-
-            <p class="ndev-ct-note">Dengan mengirim, Anda setuju pada <a href="#">Terms &amp; Conditions</a>.</p>
-          </form>
-        </div>
+        
 
       </div>
     </div>
   </div>
-
-  <!-- section -->
   <section id="desaindo" class="benefits-section">
     <div class="container narrow">
       <div class="benefits-header">
-        <span class="badge">EVENT DESA INDO</span>
-        <h2 class="benefits-title">Syarat<br>Dan Ketentuan.</h2>
+        <span class="badge">Berita</span>
+        <h2 class="benefits-title">Pemindahan Game Ke Versi 13+<br>dan Informasi Lengkap Untuk Pemain Desa Indo</h2>
       </div>
 
       <div class="benefits-list">
+
         <div class="benefit-item">
           <div class="benefit-number">01</div>
           <div class="benefit-content">
-            <h3 class="benefit-heading">Tema</h3>
+            <h3 class="benefit-heading">Alasan Perubahan</h3>
             <p>
-              Konten harus bertemakan kepahlawanan yang dikaitkan dengan game <strong>DESA INDO</strong>.
-              Tema bisa tentang perjuangan, semangat gotong royong, kebersamaan, atau keberanian versi kalian sendiri.
-              Boleh lucu, serius, atau inspiratif — yang penting tetap relevan dengan suasana Hari Pahlawan.
+              Game <strong>Desa Indo</strong> mengalami perubahan rating otomatis dari 17+ menjadi 18+ oleh sistem Roblox.
+              Untuk itu, tim pengembang memutuskan untuk <strong>menurunkan rating menjadi 13+</strong> agar game dapat dimainkan
+              oleh seluruh pemain tanpa batasan usia berlebihan.
             </p>
           </div>
         </div>
@@ -106,11 +72,18 @@
         <div class="benefit-item">
           <div class="benefit-number">02</div>
           <div class="benefit-content">
-            <h3 class="benefit-heading">Periode Event</h3>
+            <h3 class="benefit-heading">Pemindahan Game dan Data</h3>
             <p>
-              Event dimulai pada <strong>7 November 2025</strong>, bersamaan dengan update terbaru di game <strong>DESA INDO</strong>.
-              Pengumpulan konten berlangsung hingga <strong>27 November 2025 pukul 23:59 WIB</strong>.
-              Pengumuman pemenang akan dilakukan beberapa hari setelah periode event berakhir.
+              Pemindahan game ke versi 13+ mengharuskan beberapa data direset ke kondisi awal (default). Namun, tim berupaya
+              mempertahankan data penting milik pemain agar tidak hilang sepenuhnya.
+            </p>
+            <ul>
+              <li><strong>Data yang direset:</strong> progress permainan, uang, level, item, dan koleksi pribadi.</li>
+              <li><strong>Data yang dipertahankan:</strong> total donasi pemain dan total waktu bermain (playtime).</li>
+            </ul>
+            <p>
+              Data selain dua kategori tersebut akan kembali ke pengaturan awal untuk menjaga stabilitas dan konsistensi
+              sistem game versi terbaru.
             </p>
           </div>
         </div>
@@ -118,11 +91,20 @@
         <div class="benefit-item">
           <div class="benefit-number">03</div>
           <div class="benefit-content">
-            <h3 class="benefit-heading">Cara Ikut</h3>
+            <h3 class="benefit-heading">Hadiah Pemain Awal & Pemain Baru</h3>
             <p>
-              Buat video TikTok sekreatif mungkin sesuai tema, <strong> WAJIB DI DESA INDO</strong> lalu upload ke akun TikTok kamu.
-              Gunakan tagar: <strong>#DesaIndo #DesaUntukIndonesia #EventDesa</strong>.
-              Pastikan akun TikTok kamu tidak dikunci (private) agar kami bisa menilai videonya.
+              Sebagai bentuk apresiasi kepada seluruh pemain, tim <strong>Desa Indo</strong> menyiapkan hadiah khusus di minggu pertama
+              peluncuran game versi 13+:
+            </p>
+            <ul>
+              <li>Pemain lama yang berhasil menangkap <strong>500 ikan</strong> dalam minggu pertama akan mendapatkan
+                <strong>pancingan khusus edisi terbatas</strong>.
+              </li>
+              <li><strong>Pemain baru</strong> di server 13+ dapat <strong>mereedem Banner Playerlist secara gratis</strong>
+                selama minggu pertama perilisan.</li>
+            </ul>
+            <p>
+              Pastikan kamu ikut berpartisipasi di minggu pertama untuk mendapatkan hadiah-hadiah langka ini sebelum periode event berakhir.
             </p>
           </div>
         </div>
@@ -130,15 +112,18 @@
         <div class="benefit-item">
           <div class="benefit-number">04</div>
           <div class="benefit-content">
-            <h3 class="benefit-heading">Kriteria Penilaian</h3>
+            <h3 class="benefit-heading">Perubahan Server Discord</h3>
             <p>
-              Penilaian akan didasarkan pada:
+              Bersamaan dengan pembaruan game, komunitas <strong>Desa Indo</strong> kini memiliki dua server Discord:
+            </p>
             <ul>
-              <li>Kreativitas ide dan penyampaian pesan.</li>
-              <li>Kesesuaian dengan tema Hari Pahlawan & game DESA INDO.</li>
-              <li>Interaksi di TikTok (likes, views, dan komentar).</li>
-              <li>Orisinalitas konten (tidak menjiplak atau re-upload karya orang lain).</li>
+              <li><strong>Server Lama:</strong> masih aktif sementara waktu sebagai arsip dan tempat komunikasi transisi.</li>
+              <li><strong>Server Baru:</strong> menjadi pusat utama semua pengumuman, pembaruan, dan kegiatan komunitas ke depannya.</li>
             </ul>
+            <p>
+              Kami juga ingin menginformasikan bahwa seluruh informasi, event, dan pembaruan resmi akan dipublikasikan hanya di
+              <strong>server Discord baru</strong>. Kamu bisa langsung bergabung di tautan berikut:<br>
+              <a href="https://discord.gg/desaindo" target="_blank">discord.gg/desaindo</a>
             </p>
           </div>
         </div>
@@ -146,15 +131,13 @@
         <div class="benefit-item">
           <div class="benefit-number">05</div>
           <div class="benefit-content">
-            <h3 class="benefit-heading">Hadiah</h3>
+            <h3 class="benefit-heading">Tujuan Pembaruan</h3>
             <p>
-              Total hadiah sebesar <strong>Rp 2.600.000</strong> akan dibagikan kepada para pemenang dengan rincian sebagai berikut:
-            <ul>
-              <li><strong>Juara 1:</strong> Rp 1.000.000 </li>
-              <li><strong>Juara 2:</strong> Rp 500.000 + 3.000 Robux</li>
-              <li><strong>Juara 3:</strong> Rp 300.000 + 2.000 Robux</li>
-              <li><strong>Juara Views Terbanyak:</strong> Rp 200.000 + 1.000 Robux</li>
-            </ul>
+              Pembaruan ke versi 13+ dilakukan untuk menjadikan <strong>Desa Indo</strong> lebih terbuka bagi semua pemain.
+            </p>
+            <p>
+              Kami berharap versi baru ini dapat menghadirkan pengalaman bermain yang lebih nyaman, aman, dan seru untuk seluruh
+              pemain — baik yang lama maupun yang baru bergabung.
             </p>
           </div>
         </div>
@@ -162,24 +145,24 @@
         <div class="benefit-item">
           <div class="benefit-number">06</div>
           <div class="benefit-content">
-            <h3 class="benefit-heading">Ketentuan Tambahan</h3>
+            <h3 class="benefit-heading">Penutup</h3>
             <p>
-            <ul>
-              <li>Konten yang mengandung unsur SARA, kekerasan, atau pelanggaran aturan TikTok akan didiskualifikasi.</li>
-              <li>Panitia berhak menggunakan kembali konten peserta untuk keperluan promosi Ndev Studio dengan mencantumkan kredit pembuat.</li>
-              <li>Setiap peserta hanya boleh mengirim 1 video.</li>
-              <li>Keputusan panitia bersifat final dan tidak dapat diganggu gugat.</li>
-            </ul>
+              Terima kasih kepada seluruh pemain atas dukungan dan kesetiaan selama ini.
+              Perjalanan <strong>Desa Indo</strong> tidak akan berhenti — versi baru ini adalah langkah menuju komunitas yang lebih besar,
+              ramah, dan menyenangkan untuk semua usia.
+              Sampai jumpa di <strong>Desa Indo versi 13+</strong> dan di <strong>server Discord baru</strong> kami.
+            </p>
+            <p>
+              Untuk bergabung ke komunitas baru, kunjungi tautan:
+              <a href="https://discord.gg/desaindo" target="_blank">discord.gg/desaindo</a>
             </p>
           </div>
         </div>
+
       </div>
-
-
-
-
     </div>
   </section>
+
 
 
   <footer id="collab" class="footer">

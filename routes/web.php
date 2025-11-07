@@ -31,6 +31,7 @@ Route::get('/hire', [LowonganController::class, 'index'])->name('hire.index');
 Route::get('/desaindo', [HalamanController::class, 'about'])->name('about');
 Route::get('/robux', [HalamanController::class, 'robux'])->name('robux');
 Route::get('/success', [HalamanController::class, 'success'])->name('success');
+Route::get('/news', [HalamanController::class, 'news'])->name('news');
 
 
 

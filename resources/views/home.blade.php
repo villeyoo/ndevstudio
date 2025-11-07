@@ -25,6 +25,7 @@
             <li><a href="#">Home</a></li>
             <li><a href="#komunitas">Komunitas</a></li>
             <li><a href="#project">Project</a></li>
+             <li><a href="/news">Berita</a></li>
             <li><a href="#collab">Collab</a></li>
             <li><a href="/robux">Robux</a></li>
             <li><a href="{{ url('/login') }}" class="btn-nav">Login</a></li>
@@ -174,7 +175,7 @@
         <div class="benefit-item">
           <div class="benefit-number">02</div>
           <div class="benefit-content">
-            <h3 class="benefit-heading">Periode Event</h3>
+            <h3 class="benefit-heading">Periode Event</h3>  
             <p>
               Event dimulai pada <strong>7 November 2025</strong>, bersamaan dengan update terbaru di game <strong>DESA INDO</strong>.
               Pengumpulan konten berlangsung hingga <strong>27 November 2025 pukul 23:59 WIB</strong>.

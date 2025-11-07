@@ -17,6 +17,10 @@ class HalamanController extends Controller
         $products = Product::all(); // ambil semua data dari tabel products
         return view('robux', compact('products'));
     }
+     public function news()
+    {
+        return view('news');
+    }
 
      public function success()
     {
