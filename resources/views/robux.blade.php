@@ -62,6 +62,13 @@
           <span class="values-badge">HARGA ROBUX TERKINI!</span>
           <h2 class="values-title"><br></h2>
         </div>
+        <div class="search-wrapper">
+          <input
+            type="text"
+            id="productSearch"
+            class="search-input"
+            placeholder="Cari harga, nominal, Pending atau Instant..." />
+        </div>
 
         @php
         $shop = ['open' => true];
@@ -82,7 +89,11 @@
 
         <div class="values-grid">
           @foreach($products as $product)
-          <article class="value-card">
+          <article class="value-card"
+            data-title="{{ strtolower($product->title) }}"
+            data-price="{{ strtolower($product->price) }}"
+            data-type="{{ strtolower($product->type) }}">
+
             <div class="value-icon">
               <img src="{{ asset('assets/images/robux.png') }}" alt="Robux Icon">
             </div>
@@ -211,5 +222,29 @@
 
 </body>
 <script src="{{ asset('assets/js/robux.js') }}"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const searchInput = document.getElementById("productSearch");
+    const cards = document.querySelectorAll(".value-card");
+
+    searchInput.addEventListener("input", function() {
+      let query = this.value.toLowerCase();
+
+      cards.forEach(card => {
+        let title = card.dataset.title;
+        let price = card.dataset.price;
+        let type = card.dataset.type;
+
+      
+        if (title.includes(query) || price.includes(query) || type.includes(query)) {
+          card.style.display = "block";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    });
+  });
+</script>
+
 
 </html>

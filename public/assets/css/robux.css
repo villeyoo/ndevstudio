@@ -1544,3 +1544,26 @@ body {
     pointer-events: none; /* tidak bisa diklik */
     cursor: default;
 }
+.search-wrapper {
+  width: 100%;
+  margin-bottom: 25px;
+  display: flex;
+  justify-content: center;
+}
+
+.search-input {
+  width: 90%;
+  max-width: 500px;
+  padding: 12px 15px;
+    font-family: "Plus Jakarta Sans";
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  outline: none;
+  font-size: 16px;
+  transition: 0.2s ease;
+}
+
+.search-input:focus {
+  border-color: #111;
+  box-shadow: 0 0 0 2px rgba(0,0,0,0.1);
+}
