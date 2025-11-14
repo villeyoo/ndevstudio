@@ -203,3 +203,53 @@ body {
         grid-template-columns: 1fr;
     }
 }
+.status-robux {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.status-pending-box {
+    background: #ffe5e5;
+    color: #d30000;
+    border: 1px solid #ffb3b3;
+}
+
+.status-success-box {
+    background: #e5ffe9;
+    color: #0b8a24;
+    border: 1px solid #9df7a8;
+}
+.search-box {
+    display: flex;
+    gap: 10px;
+}
+
+.search-input {
+    flex: 1;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+}
+
+.search-input:focus {
+    border-color: #5a67d8;
+    outline: none;
+}
+
+.search-btn {
+    background: #5a67d8;
+    color: #fff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.search-btn:hover {
+    background: #434fb3;
+}

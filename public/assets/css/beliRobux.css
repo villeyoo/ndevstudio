@@ -361,7 +361,7 @@ body {
     color: #002c91;
     padding: 0 12px;
     border-radius: 4px;
-    font-family: "Indie Flower", cursive; /* optional */
+    font-family: "Plus Jakarta Sans", cursive; /* optional */
     transition: transform 0.36s cubic-bezier(0.2, 0.9, 0.3, 1),
         opacity 0.36s ease;
     will-change: opacity, transform;
@@ -1514,4 +1514,54 @@ body {
     font-size: 12px;
     color: #555;
     margin-top: 10px;
+}
+.cek-pajak-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 18px;
+    margin-top: 20px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    max-width: 520px;
+}
+.cek-pajak-row {
+    margin-bottom: 12px;
+}
+.cek-pajak-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+.cek-pajak-input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+}
+.cek-pajak-result {
+    margin-top: 12px;
+    padding: 12px;
+    background: #f7f9fb;
+    border-radius: 8px;
+    font-weight: 600;
+}
+.cek-pajak-note {
+    font-size: 13px;
+    color: #666;
+    margin-top: 8px;
+}
+.cek-pajak-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-top: 8px;
+}
+.btn-cek {
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    background: #0b74de;
+    color: #fff;
+    font-weight: 600;
 }

@@ -89,7 +89,7 @@ Route::middleware(['auth', 'role:owner'])->group(function () {
 
     // Dashboard Owner
     Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
-     Route::get('/dashboardStore', [AdminController::class, 'dashboardNdev'])->name('dashboardNdev');
+    Route::get('/dashboardStore', [AdminController::class, 'dashboardNdev'])->name('dashboardNdev');
 
     // --- Lowongan Management ---
     Route::prefix('dashboard')->group(function () {
@@ -149,6 +149,30 @@ Route::middleware(['auth', 'role:owner'])->group(function () {
     Route::resource('product', ProductController::class);
     Route::get('/orders', [OrderController::class, 'index'])->name('order.index');
     Route::delete('/order/{id}', [OrderController::class, 'destroy'])->name('order.destroy');
+    Route::patch('/orders/{id}/complete', [OrderController::class, 'complete'])->name('order.complete');
+
+
+
+    Route::post('/shop-toggle', function () {
+        $path = storage_path('app/shop_status.json');
+
+        // baca file (atau default open=true)
+        $data = ['open' => true];
+        if (file_exists($path)) {
+            $content = file_get_contents($path);
+            $json = json_decode($content, true);
+            if (is_array($json)) $data = $json;
+        }
+
+        // toggle
+        $data['open'] = !($data['open'] ?? true);
+
+        // simpan kembali
+        file_put_contents($path, json_encode($data));
+
+        return back()->with('success', 'Status toko berhasil diubah!');
+    })->name('shop.toggle')->middleware(['auth']); // tambahkan middleware sesuai kebutuhan
+
 });
 
 /*

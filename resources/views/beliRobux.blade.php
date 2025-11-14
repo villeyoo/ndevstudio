@@ -54,6 +54,13 @@
               <label for="username" class="ndevbuy-label">Username Roblox</label>
               <input type="text" id="username" name="username" placeholder="Masukkan username Roblox" required>
             </div>
+            <!-- Input ID Gamepass (Auto show/hide based on type) -->
+            <div class="ndevbuy-row" id="gamepass-field" style="display:none;">
+              <label for="gamepass_id" class="ndevbuy-label">ID Gamepass</label>
+              <input type="text" id="gamepass_id" name="gamepass_id" class="ndevbuy-input" placeholder="Masukkan ID Gamepass (mis. 12345678)">
+              <p class="ndevbuy-note">Isi ID Gamepass agar pesanan pending bisa diproses.</p>
+            </div>
+
 
             <div class="ndevbuy-row">
               <label for="whatsapp" class="ndevbuy-label">No WhatsApp</label>
@@ -138,7 +145,7 @@
         }
 
         // Hilangkan karakter selain angka
-   
+
       });
 
       // Optional: Kalau user klik input dan masih kosong → auto isi "62"
@@ -147,6 +154,19 @@
           waInput.value = "wa.me/62";
         }
       });
+    });
+    document.addEventListener("DOMContentLoaded", function() {
+      let productType = "{{ isset($product) ? strtolower($product->type) : '' }}";
+      let gamepassField = document.getElementById("gamepass-field");
+      let gamepassInput = document.getElementById("gamepass_id");
+
+      if (productType === "pending") {
+        if (gamepassField) gamepassField.style.display = "block";
+        if (gamepassInput) gamepassInput.required = true;
+      } else {
+        if (gamepassField) gamepassField.style.display = "none";
+        if (gamepassInput) gamepassInput.required = false;
+      }
     });
   </script>
 

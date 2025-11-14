@@ -47,6 +47,7 @@
         </p>
         <div class="hero-buttons">
           <a href="#robux" class="btn-primary">Lihat Robux.</a>
+          <a href="#cekPajak" class="btn-secondary">Cek Pajak Gamepass.</a>
         </div>
       </div>
     </div>
@@ -62,11 +63,27 @@
           <h2 class="values-title"><br></h2>
         </div>
 
-        @if($products->count() > 0)
+        @php
+        $shop = ['open' => true];
+        $shopPath = storage_path('app/shop_status.json');
+        if (file_exists($shopPath)) {
+        $shop = json_decode(file_get_contents($shopPath), true) ?? $shop;
+        }
+        @endphp
+
+        {{-- 💥 Jika toko tutup --}}
+        @if(empty($shop['open']))
+        <p style="margin-top:20px; color:#ff4444; font-weight:700; font-size:18px;">
+          🚧 Toko Sedang Tutup — Silakan kembali nanti.
+        </p>
+
+        {{-- 💥 Jika toko buka dan ada produk --}}
+        @elseif($products->count() > 0)
+
         <div class="values-grid">
           @foreach($products as $product)
           <article class="value-card">
-            <div class="value-icon" aria-hidden="true">
+            <div class="value-icon">
               <img src="{{ asset('assets/images/robux.png') }}" alt="Robux Icon">
             </div>
 
@@ -74,24 +91,60 @@
             <p class="value-price">{{ $product->price }}</p>
 
             @if($product->type)
-            <p class="value-type" style="color:#888; font-size:14px; margin-top:4px;">
-              Jenis Pengiriman: <strong style="color:#000;">{{ ucfirst($product->type) }}</strong>
-            </p>
+            <span class="value-type-badge">{{ ucfirst($product->type) }}</span>
             @endif
 
             <a href="{{ route('order.create', $product->id) }}" class="value-btn">Beli Sekarang</a>
-
           </article>
           @endforeach
         </div>
+
+        {{-- 💥 Toko buka tapi produk kosong --}}
         @else
-        <p style="margin-top: 20px; color: #666; font-weight: 600;">Belum ada Robux terbaru.</p>
+        <p style="margin-top: 20px; color: #666; font-weight: 600;">
+          Belum ada Robux terbaru.
+        </p>
         @endif
 
       </div>
-
     </div>
+  </section>
 
+  <section id="cekPajak">
+    <!-- ======= Section: Cek Pajak Gamepass (Reverse Calculator) ======= -->
+    <section class="cek-pajak-wrapper">
+      <div class="cek-pajak-card" id="cek-pajak">
+        <h3 class="cek-pajak-title">Cek Pajak Gamepass — Hitung Harga Gamepass</h3>
+        <p class="cek-pajak-desc">Masukkan berapa Robux yang ingin diterima oleh mu (bersih). Kalkulator akan memberi tahu harga gamepass yang harus ditetapkan supaya setelah potongan 30% kamu menerima jumlah tersebut.</p>
+
+        <div class="cek-pajak-row">
+          <label class="cek-pajak-label" for="gp-net">Target yang ingin diterima (Robux)</label>
+          <input class="cek-pajak-input" id="gp-net" type="number" min="0" step="1" placeholder="Contoh: 1000" />
+        </div>
+
+        <div class="cek-pajak-actions">
+          <button id="gp-calc" class="btn-cek" type="button">Hitung</button>
+          <button id="gp-reset" class="btn-cek btn-reset" type="button">Reset</button>
+        </div>
+
+        <div id="gp-result" class="cek-pajak-result" aria-live="polite" style="opacity:0; transform:translateY(8px); pointer-events:none;">
+          <!-- Hasil di-inject lewat JS -->
+          <div class="result-inner">
+            <div class="result-values">
+              <div class="rv-row"><span>Buat Gamepass Seharga (wajib):</span><strong id="res-gross">—</strong></div>
+              <div class="rv-row"><span>Potongan Roblox (30%):</span><strong id="res-tax">—</strong></div>
+              <div class="rv-row"><span>Diterima (bersih):</span><strong id="res-net">—</strong></div>
+            </div>
+            <div class="result-actions">
+              <button id="res-copy" class="btn-small">Salin Harga</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ======= End Cek Pajak ======= -->
+
+    <!-- ======= End Cek Pajak Gamepass ======= -->
 
   </section>
 
