@@ -150,6 +150,8 @@ Route::middleware(['auth', 'role:owner'])->group(function () {
     Route::get('/orders', [OrderController::class, 'index'])->name('order.index');
     Route::delete('/order/{id}', [OrderController::class, 'destroy'])->name('order.destroy');
     Route::patch('/orders/{id}/complete', [OrderController::class, 'complete'])->name('order.complete');
+    Route::patch('/orders/{order}/paid', [OrderController::class, 'paid'])->name('order.paid');
+
 
 
 

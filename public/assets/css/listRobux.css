@@ -211,7 +211,7 @@ body {
     font-size: 14px;
 }
 
-.status-pending-box {
+.status-robux-box {
     background: #ffe5e5;
     color: #d30000;
     border: 1px solid #ffb3b3;
@@ -221,6 +221,16 @@ body {
     background: #e5ffe9;
     color: #0b8a24;
     border: 1px solid #9df7a8;
+}
+.status-paid-box {
+    background: #e5ffe9;
+    color: #0b8a24;
+    border: 1px solid #9df7a8;
+}
+.status-pending-box {
+    background: #ffb8b8;
+    color: #ff0000;
+    border: 1px solid #f36262;
 }
 .search-box {
     display: flex;
@@ -252,4 +262,18 @@ body {
 
 .search-btn:hover {
     background: #434fb3;
+}
+.btn-paid {
+    background: #2563eb;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+.status-success-box {
+    background: #e5ffe9;
+    color: #0b8a24;
+    border: 1px solid #9df7a8;
 }

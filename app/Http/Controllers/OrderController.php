@@ -101,6 +101,14 @@ class OrderController extends Controller
         return redirect()->route('success')->with('success', 'Pesanan kamu berhasil dibuat! Admin akan segera menghubungi kamu lewat WhatsApp.');
     }
 
+    public function paid(Order $order)
+    {
+        $order->status = 'paid';
+        $order->save();
+
+        return back()->with('success', 'Status pesanan ditandai sebagai sudah bayar.');
+    }
+
 
     // === Kirim pesan ke pembeli ===
 

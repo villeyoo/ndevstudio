@@ -100,11 +100,14 @@
             <p>📦 <strong>Status:</strong>
               <span class="status-robux
                 {{ $order->status === 'pending' ? 'status-pending-box' : '' }}
-                {{ $order->status === 'success' ? 'status-success-box' : '' }}">
+                {{ $order->status === 'success' ? 'status-success-box' : '' }}
+                {{ $order->status === 'paid' ? 'status-paid-box' : '' }}">
                 @if($order->status === 'pending')
                 Pesanan Belum Diproses
                 @elseif($order->status === 'success')
                 Selesai
+                @elseif($order->status === 'paid')
+                Sudah Bayar
                 @else
                 {{ ucfirst($order->status) }}
                 @endif
@@ -131,11 +134,14 @@
                 </button>
               </form>
 
-              <form action="{{ route('order.destroy', $order->id) }}" method="POST" style="display:inline; margin-left:8px;">
+              <form action="{{ route('order.paid', $order->id) }}" method="POST" style="display:inline; margin-left:8px;">
                 @csrf
-                @method('DELETE')
-                <button type="submit" class="btn-delete" onclick="return confirm('Hapus pesanan ini?')">Hapus</button>
+                @method('PATCH')
+                <button type="submit" class="btn-verify" onclick="return confirm('Tandai pesanan ini sebagai sudah bayar?')">
+                  Sudah Bayar
+                </button>
               </form>
+
             </div>
 
           </div>
