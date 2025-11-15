@@ -82,7 +82,7 @@
       <div class="features-right">
         <div class="image-card">
           <!-- Ganti src sesuai lokasi gambarmu, contoh: /assets/images/revenue.png -->
-          <img src="{{ asset('assets/images/desa.png') }}" alt="Revenue preview" class="feature-image">
+          <img src="{{ asset('assets/images/desaindo.png') }}" alt="Revenue preview" class="feature-image">
         </div>
       </div>
     </div>
