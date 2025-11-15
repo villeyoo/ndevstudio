@@ -46,13 +46,13 @@
           Menciptakan <b>game kecil</b> dengan suasana santai dan cerita yang dekat.
         </p>
         <div class="hero-buttons">
-          <a href="#desaindo" class="btn-primary">Event Desa Indo.</a>
+          <a href="#gameDesa" class="btn-primary">Desa Indo.</a>
           <a href="{{ url('/hire') }}" class="btn-secondary">Request/Daftar</a>
         </div>
       </div>
     </div>
   </div>
-  <section id="komunitas" class="features-section">
+  <section id="gameDesa" class="features-section">
     <div class="container">
       <div class="features-left">
         <span class="badge">DESA INDO</span>
