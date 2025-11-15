@@ -25,7 +25,7 @@
             <li><a href="#">Home</a></li>
             <li><a href="#komunitas">Komunitas</a></li>
             <li><a href="#project">Project</a></li>
-             <li><a href="/news">Berita</a></li>
+            <li><a href="/news">Berita</a></li>
             <li><a href="#collab">Collab</a></li>
             <li><a href="/robux">Robux</a></li>
             <li><a href="{{ url('/login') }}" class="btn-nav">Login</a></li>
@@ -52,6 +52,41 @@
       </div>
     </div>
   </div>
+  <section id="komunitas" class="features-section">
+    <div class="container">
+      <div class="features-left">
+        <span class="badge">DESA INDO</span>
+        <h2 class="feature-title">MAINKAN DESA INDO.<br><span>DI <em>ROBLOX</em>.</span></h2>
+        <div class="rating-line">
+          <div class="stars"></div>
+          <div class="rating-text">1M+ <strong></strong> VISIT.</div>
+        </div>
+
+        <div class="feature-buttons">
+          <button class="feature-item active">
+            <a href="https://www.roblox.com/games/98998191230286/DESA-INDO" class="feature-item active" target="_blank" rel="noopener">
+              DESA INDO [13+] <span class="arrow">→</span>
+            </a>
+
+          </button>
+          <button class="feature-item active">
+            <a href="https://www.roblox.com/games/137551897183416/DESA-INDO-13" class="feature-item active" target="_blank" rel="noopener">
+              DESA INDO [18+] <span class="arrow">→</span>
+            </a>
+
+          </button>
+        </div>
+
+      </div>
+
+      <div class="features-right">
+        <div class="image-card">
+          <!-- Ganti src sesuai lokasi gambarmu, contoh: /assets/images/revenue.png -->
+          <img src="{{ asset('assets/images/desa.png') }}" alt="Revenue preview" class="feature-image">
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section id="komunitas" class="features-section">
     <div class="container">
@@ -82,6 +117,8 @@
       </div>
     </div>
   </section>
+
+
 
   <section id="project" class="cases-section">
     <div class="container narrow">
@@ -175,7 +212,7 @@
         <div class="benefit-item">
           <div class="benefit-number">02</div>
           <div class="benefit-content">
-            <h3 class="benefit-heading">Periode Event</h3>  
+            <h3 class="benefit-heading">Periode Event</h3>
             <p>
               Event dimulai pada <strong>7 November 2025</strong>, bersamaan dengan update terbaru di game <strong>DESA INDO</strong>.
               Pengumpulan konten berlangsung hingga <strong>27 November 2025 pukul 23:59 WIB</strong>.
