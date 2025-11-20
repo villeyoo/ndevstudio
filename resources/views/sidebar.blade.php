@@ -33,7 +33,7 @@
     <li><a href="{{ route('product.create') }}" class="menu-item"><i class="fa-solid fa-plus"></i> Tambah Robux</a></li>
     <li><a href="{{ route('product.index') }}" class="menu-item"><i class="fa-solid fa-list"></i> List Robux</a></li>
     <li>
-      <a href="{{ route('kasus.tambah') }}"
+      <a href="{{ route('kasus.form') }}"
         class="menu-item {{ Request::is('kasus/tambah') ? 'active' : '' }}">
         <i class="fa-solid fa-folder-plus"></i>
         <span>Tambah Bukti</span>
