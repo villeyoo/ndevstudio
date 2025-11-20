@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\KasusBukti;
 
 class HalamanController extends Controller
 {
@@ -17,12 +18,20 @@ class HalamanController extends Controller
         $products = Product::all(); // ambil semua data dari tabel products
         return view('robux', compact('products'));
     }
-     public function news()
+    public function news()
     {
         return view('news');
     }
 
-     public function success()
+    public function case()
+    {
+        $buktis = KasusBukti::latest()->get();
+        return view('case', compact('buktis'));
+    }
+
+
+
+    public function success()
     {
         $products = Product::all(); // ambil semua data dari tabel products
         return view('success', compact('products'));

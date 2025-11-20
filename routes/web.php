@@ -16,6 +16,7 @@ use App\Http\Controllers\FormController;
 use App\Http\Controllers\SubmissionController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\KasusController;
 
 
 /*
@@ -33,6 +34,8 @@ Route::get('/robux', [HalamanController::class, 'robux'])->name('robux');
 Route::get('/success', [HalamanController::class, 'success'])->name('success');
 Route::get('/news', [HalamanController::class, 'news'])->name('news');
 
+
+Route::get('/bukti', [HalamanController::class, 'case']);
 
 
 // Form beli Robux
@@ -152,7 +155,22 @@ Route::middleware(['auth', 'role:owner'])->group(function () {
     Route::patch('/orders/{id}/complete', [OrderController::class, 'complete'])->name('order.complete');
     Route::patch('/orders/{order}/paid', [OrderController::class, 'paid'])->name('order.paid');
 
+    // LIST KASUS
+    Route::get('/case', [KasusController::class, 'index'])->name('kasus.list');
 
+    // FORM TAMBAH KASUS
+    Route::get('/kasus/tambah', function () {
+        return view('kasus'); // halaman form
+    })->name('kasus.form');
+
+    // PROSES TAMBAH KASUS
+    Route::post('/kasus/tambah', [KasusController::class, 'tambahBukti'])->name('kasus.store');
+
+    // DETAIL KASUS
+    Route::get('/kasus/detail/{id}', [KasusController::class, 'detail'])->name('kasus.detail');
+
+    // HAPUS KASUS
+    Route::delete('/kasus/hapus/{id}', [KasusController::class, 'delete'])->name('kasus.hapus');
 
 
     Route::post('/shop-toggle', function () {

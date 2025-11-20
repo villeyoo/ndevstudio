@@ -32,7 +32,13 @@
     <li><a href="{{ route('order.index') }}" class="menu-item"><i class="fa-solid fa-bag-shopping"></i> Orderan</a></li>
     <li><a href="{{ route('product.create') }}" class="menu-item"><i class="fa-solid fa-plus"></i> Tambah Robux</a></li>
     <li><a href="{{ route('product.index') }}" class="menu-item"><i class="fa-solid fa-list"></i> List Robux</a></li>
-
+    <li>
+      <a href="{{ route('kasus.tambah') }}"
+        class="menu-item {{ Request::is('kasus/tambah') ? 'active' : '' }}">
+        <i class="fa-solid fa-folder-plus"></i>
+        <span>Tambah Bukti</span>
+      </a>
+    </li>
   </ul>
 
   <!-- Logout -->
@@ -95,7 +101,7 @@
 
   .divider {
     border: none;
-    border-top: 1px solid rgba(255,255,255,0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
     margin: 10px 0;
   }
 
@@ -115,7 +121,7 @@
 
   .menu-item:hover,
   .menu-item.active {
-    background: rgba(255,255,255,0.1);
+    background: rgba(255, 255, 255, 0.1);
     border-radius: 6px;
   }
 
@@ -142,5 +148,4 @@
   .logout-btn:hover {
     opacity: 0.9;
   }
-  
 </style>

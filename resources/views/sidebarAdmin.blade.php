@@ -12,23 +12,25 @@
 
   <ul class="menu">
     <li><a href="{{ route('dashboard') }}" class="menu-item {{ Request::is('dashboard') ? 'active' : '' }}">
-      <i class="fa-solid fa-house"></i>
-      <span>Dashboard</span>
-    </a></li>
+        <i class="fa-solid fa-house"></i>
+        <span>Dashboard</span>
+      </a></li>
 
     <li><a href="{{ route('robux.form') }}" class="menu-item">
-      <i class="fa-solid fa-plus"></i>
-      <span>Exchange Robux</span>
-    </a></li>
- <li><a href="{{ route('robux.track') }}" class="menu-item">
-      <i class="fa-solid fa-plus"></i>
-      <span>Track Robux</span>
-    </a></li>
+        <i class="fa-solid fa-plus"></i>
+        <span>Exchange Robux</span>
+      </a></li>
+    <li><a href="{{ route('robux.track') }}" class="menu-item">
+        <i class="fa-solid fa-plus"></i>
+        <span>Track Robux</span>
+      </a></li>
     <li><a href="{{ route('bug.index') }}" class="menu-item">
-      <i class="fa-solid fa-bug"></i>
-      <span>Tambah Bug</span>
-    </a></li>
+        <i class="fa-solid fa-bug"></i>
+        <span>Tambah Bug</span>
+      </a></li>
   </ul>
+
+
 
   <form action="{{ route('logout') }}" method="POST" class="logout-form">
     @csrf
@@ -47,31 +49,31 @@
 
 <!-- Sidebar Script -->
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-  const sidebar = document.getElementById('sidebar');
-  const overlay = document.getElementById('overlay');
-  const hamburger = document.getElementById('hamburgerBtn');
-  const hamburgerText = document.getElementById('hamburgerText');
+  document.addEventListener("DOMContentLoaded", function() {
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+    const hamburger = document.getElementById('hamburgerBtn');
+    const hamburgerText = document.getElementById('hamburgerText');
 
-  function openSidebar() {
-    sidebar.classList.add('active');
-    overlay.classList.add('show');
-    hamburgerText.textContent = 'Back';
-    hamburger.querySelector('i').classList.replace('fa-bars', 'fa-arrow-left');
-  }
+    function openSidebar() {
+      sidebar.classList.add('active');
+      overlay.classList.add('show');
+      hamburgerText.textContent = 'Back';
+      hamburger.querySelector('i').classList.replace('fa-bars', 'fa-arrow-left');
+    }
 
-  function closeSidebar() {
-    sidebar.classList.remove('active');
-    overlay.classList.remove('show');
-    hamburgerText.textContent = 'Menu';
-    hamburger.querySelector('i').classList.replace('fa-arrow-left', 'fa-bars');
-  }
+    function closeSidebar() {
+      sidebar.classList.remove('active');
+      overlay.classList.remove('show');
+      hamburgerText.textContent = 'Menu';
+      hamburger.querySelector('i').classList.replace('fa-arrow-left', 'fa-bars');
+    }
 
-  hamburger.addEventListener('click', () => {
-    if (sidebar.classList.contains('active')) closeSidebar();
-    else openSidebar();
+    hamburger.addEventListener('click', () => {
+      if (sidebar.classList.contains('active')) closeSidebar();
+      else openSidebar();
+    });
+
+    overlay.addEventListener('click', closeSidebar);
   });
-
-  overlay.addEventListener('click', closeSidebar);
-});
 </script>

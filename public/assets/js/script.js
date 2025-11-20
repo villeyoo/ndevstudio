@@ -9,106 +9,120 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-
 window.addEventListener("scroll", function() {
-  const navbar = document.querySelector(".navbar");
-  if (window.scrollY > 20) {
-    navbar.classList.add("scrolled");
-  } else {
-    navbar.classList.remove("scrolled");
-  }
+    const navbar = document.querySelector(".navbar");
+    if (window.scrollY > 20) {
+        navbar.classList.add("scrolled");
+    } else {
+        navbar.classList.remove("scrolled");
+    }
 });
 
 // === SCROLL TO TOP BUTTON ===
 const scrollTopBtn = document.getElementById("scrollTopBtn");
 
 window.addEventListener("scroll", function() {
-  if (window.scrollY > 300) {
-    scrollTopBtn.classList.add("show");
-  } else {
-    scrollTopBtn.classList.remove("show");
-  }
+    if (window.scrollY > 300) {
+        scrollTopBtn.classList.add("show");
+    } else {
+        scrollTopBtn.classList.remove("show");
+    }
 });
 
 scrollTopBtn.addEventListener("click", function() {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 });
 
 window.addEventListener('scroll', () => {
-  const navbar = document.querySelector('.navbar');
-  if (window.scrollY > 20) {
-    navbar.classList.add('scrolled');
-  } else {
-    navbar.classList.remove('scrolled');
-  }
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 20) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
 });
 
 (function(){
-  // Ubah daftar frasa di sini
-  const phrases = [
-    "Selamat Datang",        // Indonesia
-    "Sugeng Rawuh",          // Jawa halus
-    "Wilujeng Sumping",      // Sunda
-    "Sampurasun",            // Sunda (sapaan sopan)
-    "Rahajeng Rauh",         // Bali
-    "Salam Satebben",        // Madura
-    "Horas!",                // Batak
-    "Tabea",                 // Manado
-    "Salam Minang",          // Minangkabau
-    "Welcome",               // Inggris
-    "Bienvenido",            // Spanyol (biar keren)
-    "Benvenuto",             // Italia
-    "Selamat Dateng Rek",    // Betawi santai
-    "Sugeng Rawuh Riko",     // Jawa timuran
-    "Sampurasun Baraya",     // Sunda akrab
+    const phrases = [
+        "Selamat Datang",
+        "Sugeng Rawuh",
+        "Wilujeng Sumping",
+        "Sampurasun",
+        "Rahajeng Rauh",
+        "Salam Satebben",
+        "Horas!",
+        "Tabea",
+        "Salam Minang",
+        "Welcome",
+        "Bienvenido",
+        "Benvenuto",
+        "Selamat Dateng Rek",
+        "Sugeng Rawuh Riko",
+        "Sampurasun Baraya",
+    ];
 
-  ];
+    const el = document.getElementById('rotatingText');
+    if(!el) return;
 
-  const el = document.getElementById('rotatingText');
-  if(!el) return;
+    const holdTime = 2200;
+    const fadeTime = 360;
+    let idx = 0;
 
-  // konfigurasi
-  const holdTime = 2200;    // ms teks terlihat penuh sebelum diganti
-  const fadeTime = 360;     // ms durasi fade out / in (sama dengan CSS transition)
-  let idx = 0;
+    function setText(newText){
+        el.textContent = newText;
+    }
 
-  // helper: set text while keeping aria-friendly attributes
-  function setText(newText){
-    // jika butuh markup (mis. highlight kata tertentu), kamu bisa parse HTML here
-    el.textContent = newText;
-  }
+    setText(phrases[0]);
+    el.classList.add('rotating-fade-in');
 
-  // main loop
-  setText(phrases[0]);
-  el.classList.add('rotating-fade-in');
+    function next(){
+        el.classList.remove('rotating-fade-in');
+        el.classList.add('rotating-fade-out');
 
-  function next(){
-    // fade out
-    el.classList.remove('rotating-fade-in');
-    el.classList.add('rotating-fade-out');
+        setTimeout(()=>{
+            idx = (idx + 1) % phrases.length;
+            setText(phrases[idx]);
 
-    // setelah fadeTime, ganti teks dan fade in
-    setTimeout(()=>{
-      idx = (idx + 1) % phrases.length;
-      setText(phrases[idx]);
+            el.classList.remove('rotating-fade-out');
+            el.classList.add('rotating-fade-in');
+        }, fadeTime);
 
-      el.classList.remove('rotating-fade-out');
-      el.classList.add('rotating-fade-in');
-    }, fadeTime);
+        setTimeout(next, fadeTime + holdTime);
+    }
 
-    // schedule next full cycle
-    setTimeout(next, fadeTime + holdTime);
-  }
+    setTimeout(next, holdTime);
 
-  // start after initial holdTime
-  setTimeout(next, holdTime);
-
-  // Optional: pause on hover to let user read
-  let paused = false;
-  el.addEventListener('mouseenter', ()=>{ paused = true; });
-  el.addEventListener('mouseleave', ()=>{ paused = false; });
-  // If you want to actually stop/show pause behavior, you'd need to clear and restart timers.
+    let paused = false;
+    el.addEventListener('mouseenter', ()=>{ paused = true; });
+    el.addEventListener('mouseleave', ()=>{ paused = false; });
 })();
+
+
+// =====================================
+//          IMAGE POPUP FULLSCREEN
+// =====================================
+
+const modal = document.getElementById("imgModal");
+const modalImg = document.getElementById("imgPreview");
+const closeModal = document.querySelector(".close-modal");
+
+// Ambil semua gambar bukti
+document.querySelectorAll(".evidence-image img").forEach(img => {
+    img.addEventListener("click", () => {
+        modal.style.display = "block";
+        modalImg.src = img.src;
+    });
+});
+
+// Tombol tutup
+closeModal.addEventListener("click", () => {
+    modal.style.display = "none";
+});
+
+// Klik area hitam juga tutup
+modal.addEventListener("click", (e) => {
+    if (e.target === modal) modal.style.display = "none";
+});
