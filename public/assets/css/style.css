@@ -1411,3 +1411,15 @@ body {
   border-radius: 20px;
   box-shadow: 0 15px 40px rgba(0,0,0,0.4);
 }
+.claim-status {
+  padding: 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  color: #000;
+  margin-top: 12px;
+}
+
+.claim-status.error {
+  background: #ef4444;
+  color: #fff;
+}

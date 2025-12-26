@@ -36,4 +36,9 @@ class HalamanController extends Controller
         $products = Product::all(); // ambil semua data dari tabel products
         return view('success', compact('products'));
     }
+
+    public function pengumuman()
+    {
+        return view ('eventPengumuman');
+    }
 }

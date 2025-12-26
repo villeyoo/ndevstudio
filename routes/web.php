@@ -36,6 +36,7 @@ Route::get('/news', [HalamanController::class, 'news'])->name('news');
 
 
 Route::get('/bukti', [HalamanController::class, 'case']);
+Route::get('/pemenang', [HalamanController::class, 'pengumuman']);
 
 
 // Form beli Robux
