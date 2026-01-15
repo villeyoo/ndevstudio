@@ -120,14 +120,16 @@
                             <p>{{ $laporan->isi }}</p>
                         </div>
 
-                        @if($laporan->attachment)
-                        <div class="laporan-attachment">
-                            <a href="{{ asset('uploads/'.$laporan->attachment) }}" target="_blank">
-                                📎 Lihat Lampiran
+                        <div class="card-body">
+                            <a href="{{ asset('uploads/'.$laporan->attachment) }}"
+                                target="_blank"
+                                class="btn btn-success">
+                                📎 Lihat/Download Lampiran
                             </a>
+                            <small class="text-muted d-block mt-2">
+                                File: {{ basename($laporan->attachment) }}
+                            </small>
                         </div>
-                        @endif
-
                     </div>
 
                     @endisset

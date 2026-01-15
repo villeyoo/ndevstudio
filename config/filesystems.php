@@ -36,10 +36,10 @@ return [
             'throw' => false,
         ],
 
-        'public' => [
+       'public' => [
             'driver' => 'local',
-            'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'root' => public_path('uploads'),        // ← UBAH INI
+            'url' => env('APP_URL').'/uploads',      // ← UBAH INI
             'visibility' => 'public',
             'throw' => false,
         ],

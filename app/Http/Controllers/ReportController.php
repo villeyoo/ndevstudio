@@ -21,39 +21,39 @@ class ReportController extends Controller
     // =========================
     // SIMPAN LAPORAN
     // =========================
-  public function store(Request $request)
-{
-    $request->validate([
-        'nama'       => 'nullable|string|max:255',
-        'kontak'     => 'nullable|string|max:255',
-        'kategori'   => 'required|string|max:50',
-        'isi'        => 'required|string',
-        'attachment' => 'nullable|file|max:10240',
-    ]);
+    public function store(Request $request)
+    {
+        $request->validate([
+            'nama'       => 'nullable|string|max:255',
+            'kontak'     => 'nullable|string|max:255',
+            'kategori'   => 'required|string|max:50',
+            'isi'        => 'required|string',
+            'attachment' => 'nullable|file|mimes:jpg,jpeg,png,pdf,doc,docx|max:10240',
+        ]);
 
-    $path = null;
+        $path = null;
 
-    if ($request->hasFile('attachment')) {
-        // Simpan ke disk 'public' (sekarang ke public/uploads)
-        $path = $request->file('attachment')->store('laporan', 'public');
+        if ($request->hasFile('attachment')) {
+            // File akan tersimpan di: public/uploads/laporan/
+            $path = $request->file('attachment')->store('laporan', 'public');
+        }
+
+        $token = strtoupper(Str::random(10));
+
+        Laporan::create([
+            'nama'       => $request->nama,
+            'kontak'     => $request->kontak,
+            'kategori'   => $request->kategori,
+            'isi'        => $request->isi,
+            'attachment' => $path,  // Simpan: "laporan/xxx.jpg"
+            'token'      => $token,
+            'status'     => 'DITERIMA',
+        ]);
+
+        return back()
+            ->with('success', 'Laporan berhasil dikirim!')
+            ->with('token', $token);
     }
-
-    $token = strtoupper(Str::random(10));
-
-    Laporan::create([
-        'nama'       => $request->nama,
-        'kontak'     => $request->kontak,
-        'kategori'   => $request->kategori,
-        'isi'        => $request->isi,
-        'attachment' => $path,
-        'token'      => $token,
-        'status'     => 'DITERIMA',
-    ]);
-
-    return back()
-        ->with('success', 'Laporan berhasil dikirim!')
-        ->with('token', $token);
-}
 
     public function cekForm()
     {
