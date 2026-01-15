@@ -17,6 +17,9 @@ use App\Http\Controllers\SubmissionController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\KasusController;
+use App\Http\Controllers\ReportController;
+
+
 
 
 /*
@@ -35,8 +38,10 @@ Route::get('/success', [HalamanController::class, 'success'])->name('success');
 Route::get('/news', [HalamanController::class, 'news'])->name('news');
 
 
+
 Route::get('/bukti', [HalamanController::class, 'case']);
 Route::get('/pemenang', [HalamanController::class, 'pengumuman']);
+
 
 
 // Form beli Robux
@@ -66,6 +71,15 @@ Route::post('/scripter', [ScripterController::class, 'store'])->name('pelamar.sc
 Route::get('/polisi', [PolisiController::class, 'showForm'])->name('polisi.form');
 Route::post('/polisi', [PolisiController::class, 'store'])->name('pelamar.polisi.store');
 
+Route::get('/laporan', [ReportController::class, 'lapor']);
+Route::get('/laporan', [ReportController::class, 'form'])
+    ->name('laporan.form');
+Route::post('/laporan', [ReportController::class, 'store'])
+    ->name('laporan.kirim');
+
+Route::get('/laporan/cek', [ReportController::class, 'cekForm'])->name('laporan.cek.form');
+Route::post('/laporan/cek', [ReportController::class, 'cekProses'])->name('laporan.cek.proses');
+
 /*
 |--------------------------------------------------------------------------
 | AUTH ROUTES
@@ -93,6 +107,7 @@ Route::middleware(['auth', 'role:owner'])->group(function () {
 
     // Dashboard Owner
     Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
+    Route::get('/semuaLaporan', [AdminController::class, 'daftarLaporan'])->name('daftarLaporan');
     Route::get('/dashboardStore', [AdminController::class, 'dashboardNdev'])->name('dashboardNdev');
 
     // --- Lowongan Management ---
@@ -155,6 +170,26 @@ Route::middleware(['auth', 'role:owner'])->group(function () {
     Route::delete('/order/{id}', [OrderController::class, 'destroy'])->name('order.destroy');
     Route::patch('/orders/{id}/complete', [OrderController::class, 'complete'])->name('order.complete');
     Route::patch('/orders/{order}/paid', [OrderController::class, 'paid'])->name('order.paid');
+
+    Route::get('/showlaporan', [AdminController::class, 'laporanIndex'])
+        ->name('admin.laporan');
+
+    Route::get('/detaillaporan/{id}', [AdminController::class, 'laporanDetail'])
+        ->name('admin.laporan.detail');
+
+    Route::post('/laporan/{id}/status', [AdminController::class, 'updateStatus'])
+        ->name('admin.laporan.status');
+    // Tombol Hapus Laporan (hapus record + file)
+    Route::delete('/admin/laporan/delete/{id}', [AdminController::class, 'deleteLaporan'])->name('admin.laporan.delete');
+
+    Route::delete('/laporan/{id}', [AdminController::class, 'deleteLaporan'])
+        ->name('admin.laporan.delete');
+
+    Route::post('/admin/laporan/{id}/selesai', [AdminController::class, 'tandaiSelesai'])
+        ->name('laporan.selesai');
+
+    // Download attachment laporan
+    Route::get('/admin/laporan/download/{id}', [AdminController::class, 'downloadLaporan'])->name('laporan.download');
 
     // LIST KASUS
     Route::get('/case', [KasusController::class, 'index'])->name('kasus.list');

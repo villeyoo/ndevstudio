@@ -54,13 +54,13 @@ class KasusController extends Controller
             }
         } catch (\Throwable $e) {
 
-            Log::warning('putFileAs/store failed: '.$e->getMessage());
+            Log::warning('putFileAs/store failed: ' . $e->getMessage());
 
             try {
                 $path = $file->store('bukti_kasus', 'public');
             } catch (\Throwable $e2) {
 
-                Log::error('Fallback store failed: '.$e2->getMessage());
+                Log::error('Fallback store failed: ' . $e2->getMessage());
 
                 try {
                     // fallback manual terakhir

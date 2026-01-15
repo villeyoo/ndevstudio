@@ -20,7 +20,7 @@ body {
 }
 /* ===== HERO CARD ===== */
 .hero-card {
-    background: linear-gradient(135deg, #003bcf, #001b5f);
+    background: linear-gradient(10deg, #000e30, #002a96);
     color: white;
     width: 100%;
     max-width: 1900px;
@@ -341,10 +341,23 @@ body {
     gap: 20px;
     font-weight: bold;
 }
-
+.hero-tombol {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-weight: bold;
+}
 .btn-primary {
     background-color: white;
     color: #0039cc;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-weight: 600;
+    text-decoration: none;
+}
+.btn-third {
+    background-color: white;
+    color: #002072;
     padding: 12px 25px;
     border-radius: 25px;
     font-weight: 600;
@@ -361,6 +374,7 @@ body {
 }
 
 .btn-primary:hover,
+.btn-third:hover,
 .btn-secondary:hover {
     opacity: 0.9;
 }
@@ -1165,7 +1179,23 @@ body {
     opacity: 0.95;
     transform: translateY(-1px);
 }
-
+.ndev-ct-lapor {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-top: 6px;
+    background: #001faa;
+    color: #fff;
+    font-family: "Plus Jakarta Sans";
+    font-weight: 700;
+    border-radius: 24px;
+    border: none;
+    cursor: pointer;
+}
+.ndev-ct-lapor:hover {
+    opacity: 0.95;
+    transform: translateY(-1px);
+}
 /* note */
 .ndev-ct-note {
     font-size: 12px;
@@ -1324,102 +1354,326 @@ body {
     }
 }
 .community-join {
-  width: 100%;
-  padding: 80px 0;
-  background: linear-gradient(135deg, #1b1c30, #2b2d45);
-  color: #fff;
+    width: 100%;
+    padding: 80px 0;
+    background: linear-gradient(135deg, #1b1c30, #2b2d45);
+    color: #fff;
 }
 
 .community-wrapper {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
 }
 
 .community-content {
-  flex: 1;
+    flex: 1;
 }
 
 .community-subtitle {
-  font-size: 14px;
-  letter-spacing: 2px;
-  font-weight: 600;
-  opacity: 0.7;
-  margin-bottom: 10px;
+    font-size: 14px;
+    letter-spacing: 2px;
+    font-weight: 600;
+    opacity: 0.7;
+    margin-bottom: 10px;
 }
 
 .community-title {
-  font-size: 42px;
-  font-weight: 800;
-  line-height: 1.2;
-  margin-bottom: 18px;
+    font-size: 42px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 18px;
 }
 
 .community-title span {
-  color: #8f87ff;
+    color: #8f87ff;
 }
 
 .community-desc {
-  font-size: 16px;
-  opacity: 0.8;
-  margin-bottom: 30px;
-  max-width: 420px;
+    font-size: 16px;
+    opacity: 0.8;
+    margin-bottom: 30px;
+    max-width: 420px;
 }
 
 .community-buttons {
-  display: flex;
-  gap: 15px;
+    display: flex;
+    gap: 15px;
 }
 
 .btn-primary {
-  background: #6b63ff;
-  padding: 12px 22px;
-  border-radius: 10px;
-  text-decoration: none;
-  font-weight: 600;
-  color: #fff;
-  transition: 0.2s ease;
+    background: #6b63ff;
+    padding: 12px 22px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    color: #fff;
+    transition: 0.2s ease;
 }
 
 .btn-primary:hover {
-  background: #4b44ff;
+    background: #4b44ff;
 }
 
 .btn-secondary {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  padding: 12px 22px;
-  border-radius: 10px;
-  text-decoration: none;
-  font-weight: 600;
-  color: #fff;
-  backdrop-filter: blur(4px);
-  transition: 0.2s ease;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 12px 22px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    color: #fff;
+    backdrop-filter: blur(4px);
+    transition: 0.2s ease;
 }
 
 .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.2);
 }
 
 .community-image img {
-  width: 420px;
-  border-radius: 20px;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    width: 420px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
 }
 .claim-status {
-  padding: 14px;
-  border-radius: 10px;
-  font-weight: 600;
-  color: #000;
-  margin-top: 12px;
+    padding: 14px;
+    border-radius: 10px;
+    font-weight: 600;
+    color: #000;
+    margin-top: 12px;
 }
 
 .claim-status.error {
-  background: #ef4444;
-  color: #fff;
+    background: #ef4444;
+    color: #fff;
+}
+.report-wrapper {
+    width: 100%;
+    padding: 0 20px; /* jarak kiri kanan */
+    box-sizing: border-box;
+}
+
+.report-form {
+    width: 100%;
+    max-width: 1000px; /* batas nyaman di desktop */
+    margin: 30px auto 0;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .report-form {
+        max-width: 100%;
+    }
+}
+
+/* HP */
+@media (max-width: 600px) {
+    .report-wrapper {
+        padding: 0 14px;
+    }
+
+    .report-form {
+        gap: 14px;
+    }
+}
+/* SAMAIN SEMUA INPUT */
+.gayane {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 14px;
+    background-color: #fff;
+    color: #111;
+    outline: none;
+    box-sizing: border-box;
+}
+
+/* FOCUS EFFECT */
+.gayane:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+/* SELECT FIX (biar ga default browser jelek) */
+select.gayane {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 24 24'%3E%3Cpath stroke='%23666' stroke-width='2' d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 16px;
+    cursor: pointer;
+}
+
+/* TEXTAREA FIX */
+textarea.gayane {
+    resize: vertical;
+    min-height: 140px;
+    line-height: 1.6;
+}
+.alert {
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 14px;
+}
+
+.alert-success {
+    background: #e6fff1;
+    border: 1px solid #49ff11;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    color: #1f7a55;
+}
+
+.alert-info {
+    background: #eef4ff;
+    border: 1px solid #5a7cff;
+    color: #243b7a;
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.alert-danger {
+    background: #ffecec;
+    border: 1px solid #ff5a5a;
+    color: #7a1f1f;
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.alert code {
+    background: #000;
+    color: #00ffcc;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    display: inline-block;
+    margin-top: 6px;
+}
+/* ===================== */
+/* HASIL LAPORAN */
+/* ===================== */
+
+.laporan-result {
+    margin-top: 30px;
+    animation: fadeUp 0.5s ease;
+}
+
+.laporan-title {
+    text-align: center;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 18px;
+}
+
+.laporan-token {
+    display: flex;
+    justify-content: space-between;
+    background: #f2f5ff;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.laporan-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 4px;
+    font-size: 14px;
+    border-bottom: 1px dashed #dbe2ff;
+}
+
+.laporan-item span {
+    opacity: 0.7;
+}
+
+.laporan-status {
+    margin: 16px 0;
+    padding: 14px;
+    border-radius: 14px;
+    text-align: center;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+/* STATUS WARNA */
+.status-diterima {
+    background: linear-gradient(135deg, #1e90ff, #005eff);
+    color: white;
+}
+.status-pending {
+    background: linear-gradient(135deg, #ffb01e, #ffd900);
+    color: rgb(0, 0, 0);
+}
+
+
+.status-diproses {
+    background: linear-gradient(135deg, #ffb703, #ff8c00);
+    color: #1a1a1a;
+}
+
+.status-selesai {
+    background: linear-gradient(135deg, #00c853, #009624);
+    color: white;
+}
+
+.status-ditolak {
+    background: linear-gradient(135deg, #ff5252, #c62828);
+    color: white;
+}
+
+.laporan-isi {
+    margin-top: 14px;
+}
+
+.laporan-isi label {
+    font-weight: 700;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.laporan-isi p {
+    background: #f8f9ff;
+    padding: 14px;
+    border-radius: 12px;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+.laporan-attachment {
+    margin-top: 14px;
+    text-align: center;
+}
+
+.laporan-attachment a {
+    display: inline-block;
+    background: #001faa;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 22px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

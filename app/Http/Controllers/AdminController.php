@@ -10,6 +10,8 @@ use App\Models\Polisi;
 use App\Models\Bug;   // ✅ Tambahkan model Bug
 use App\Models\Order;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Laporan;
+
 
 class AdminController extends Controller
 {
@@ -34,6 +36,20 @@ class AdminController extends Controller
             'bugs'          // ✅ kirim ke view
         ));
     }
+    public function daftarLaporan()
+    {
+        // total semua laporan
+        $totalLaporan = Laporan::count();
+
+        // daftar laporan terbaru
+        $laporans = Laporan::latest()->take(10)->get();
+
+        return view('daftarlaporan', compact(
+            'totalLaporan',
+            'laporans'
+        ));
+    }
+
 
     public function showScripter()
     {
@@ -98,4 +114,74 @@ class AdminController extends Controller
             'pendingOrders'
         ));
     }
+    public function laporanIndex()
+    {
+        $laporans = Laporan::latest()->get();
+
+        return view('lihatlaporan', compact('laporans'));
+    }
+    public function laporanDetail($id)
+    {
+        $laporan = Laporan::findOrFail($id);
+        return view('detaillaporan', compact('laporan'));
+    }
+    public function updateStatus(Request $request, $id)
+    {
+        $request->validate([
+            'status' => 'required|in:PENDING,DIPROSES,SELESAI,DITOLAK'
+        ]);
+
+        $laporan = Laporan::findOrFail($id);
+        $laporan->status = $request->status;
+        $laporan->save();
+
+        return back()->with('success', 'Status laporan berhasil diperbarui.');
+    }
+    public function deleteLaporan($id)
+    {
+        $laporan = Laporan::findOrFail($id);
+
+        if ($laporan->attachment && Storage::disk('public')->exists($laporan->attachment)) {
+            Storage::disk('public')->delete($laporan->attachment);
+        }
+
+        $laporan->delete();
+
+        return back()->with('success', 'Laporan berhasil dihapus.');
+    }
+    public function laporanByStatus($status)
+    {
+        $laporans = Laporan::where('status', strtoupper($status))
+            ->latest()
+            ->get();
+
+        return view('lihatlaporan', compact('laporans'));
+    }
+
+
+    public function tandaiSelesai($id)
+    {
+        $laporan = Laporan::findOrFail($id);
+
+        $laporan->update([
+            'status' => 'SELESAI'
+        ]);
+
+        return back()->with('success', 'Laporan berhasil ditandai SELESAI.');
+    }
+    public function downloadLaporan($id)
+{
+    $laporan = Laporan::findOrFail($id);
+
+    if (!$laporan->attachment || !Storage::disk('public')->exists($laporan->attachment)) {
+        return back()->with('error', 'File attachment tidak ditemukan.');
+    }
+
+    // Ambil path file
+    $path = storage_path('app/public/' . $laporan->attachment);
+    $filename = basename($laporan->attachment);
+
+    return response()->download($path, $filename);
+}
+
 }

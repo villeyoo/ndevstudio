@@ -46,13 +46,13 @@
           Menciptakan <b>game kecil</b> dengan suasana santai dan cerita yang dekat.
         </p>
         <div class="hero-buttons">
-          <a href="#gameDesa" class="btn-primary">Desa Indo.</a>
+          <a href="/laporan" class="btn-secondary">LAPOR.</a>
           <a href="{{ url('/hire') }}" class="btn-secondary">Request/Daftar</a>
         </div>
       </div>
     </div>
   </div>
-  <section id="gameDesa" class="features-section">
+  <!-- <section id="gameDesa" class="features-section">
     <div class="container">
       <div class="features-left">
         <span class="badge">DESA INDO</span>
@@ -67,7 +67,6 @@
             <a href="https://www.roblox.com/games/98998191230286/DESA-INDO" class="feature-item active" target="_blank" rel="noopener">
               DESA INDO [13+] <span class="arrow">→</span>
             </a>
-
           </button>
           <button class="feature-item active">
             <a href="https://www.roblox.com/games/137551897183416/DESA-INDO-13" class="feature-item active" target="_blank" rel="noopener">
@@ -76,17 +75,15 @@
 
           </button>
         </div>
-
       </div>
 
       <div class="features-right">
         <div class="image-card">
-          <!-- Ganti src sesuai lokasi gambarmu, contoh: /assets/images/revenue.png -->
           <img src="{{ asset('assets/images/desaindo.png') }}" alt="Revenue preview" class="feature-image">
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <section id="komunitas" class="features-section">
     <div class="container">

@@ -29,8 +29,6 @@ class HalamanController extends Controller
         return view('case', compact('buktis'));
     }
 
-
-
     public function success()
     {
         $products = Product::all(); // ambil semua data dari tabel products
@@ -41,4 +39,5 @@ class HalamanController extends Controller
     {
         return view ('eventPengumuman');
     }
+   
 }

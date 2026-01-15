@@ -16,6 +16,7 @@
     <li class="menu-section">DESA INDO</li>
     <li><a href="{{ route('dashboard') }}" class="menu-item {{ Request::is('dashboard') ? 'active' : '' }}"><i class="fa-solid fa-gauge"></i> Dashboard</a></li>
     <li><a href="{{ route('lowongan.create') }}" class="menu-item"><i class="fa-solid fa-plus"></i> Tambah Lowongan</a></li>
+    <li><a href="{{ route('daftarLaporan') }}" class="menu-item"><i class="fa-solid fa-plus"></i> Daftar Laporan</a></li>
     <li><a href="{{ route('bug.index') }}" class="menu-item"><i class="fa-solid fa-bug"></i> Tambah Bug</a></li>
     <li><a href="{{ route('robux.index') }}" class="menu-item"><i class="fa-solid fa-coins"></i> Permintaan Robux</a></li>
     <li><a href="{{ route('lowongan.list') }}" class="menu-item"><i class="fa-solid fa-list"></i> List Lowongan</a></li>
@@ -23,6 +24,7 @@
     <li><a href="{{ route('polisi.index') }}" class="menu-item"><i class="fa-solid fa-shield-halved"></i> Polisi</a></li>
     <li><a href="{{ route('submissions.index') }}" class="menu-item"><i class="fa-solid fa-flag"></i> Event Desa</a></li>
     <li><a href="{{ route('content-creator.index') }}" class="menu-item"><i class="fa-solid fa-user-pen"></i> Content Creator</a></li>
+    <li><a href="{{ route('admin.laporan') }}" class="menu-item"><i class="fa-solid fa-user-pen"></i>Lihat Laporan</a></li>
 
     <hr class="divider">
 

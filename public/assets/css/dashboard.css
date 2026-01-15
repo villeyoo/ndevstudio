@@ -444,3 +444,370 @@ body {
     margin-bottom: 16px;
     font-weight: 600;
 }
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 18px;
+}
+
+.card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 18px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.status {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.status-pending {
+    background: #ffe9a8;
+    color: #9a6b00;
+}
+.status-process {
+    background: #cde7ff;
+    color: #004b91;
+}
+.status-diterima {
+    background: #0074e0;
+    color: #ffffff;
+}
+.status-done {
+    background: #c7f7d4;
+    color: #007f3b;
+}
+.status-reject {
+    background: #ffd0d0;
+    color: #a30000;
+}
+
+.card-actions {
+    margin-top: 14px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.btn-view {
+    background: #001faa;
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.btn-delete {
+    background: #d62828;
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+select {
+    border-radius: 20px;
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+}
+/* =========================
+   Laporan List Styles
+   ========================= */
+.laporan-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.laporan-list li {
+    background: white;
+    padding: 15px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+}
+
+.laporan-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.laporan-header h4 {
+    margin: 0;
+}
+
+.status-box {
+    padding: 5px 12px;
+    border-radius: 18px;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.status-pending {
+    background: linear-gradient(135deg, #ffb703, #ff8c00);
+    color: #1a1a1a;
+}
+
+.status-diterima {
+    background: linear-gradient(135deg, #1e90ff, #005eff);
+    color: white;
+}
+
+.status-diproses {
+    background: linear-gradient(135deg, #ffb703, #ff8c00);
+    color: #1a1a1a;
+}
+
+.status-selesai {
+    background: linear-gradient(135deg, #00c853, #009624);
+    color: white;
+}
+
+.status-ditolak {
+    background: linear-gradient(135deg, #ff5252, #c62828);
+    color: white;
+}
+
+.laporan-isi {
+    margin-top: 10px;
+    white-space: pre-wrap;
+}
+
+.laporan-attachment {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.laporan-attachment img,
+.laporan-attachment video {
+    max-width: 120px;
+    max-height: 80px;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+.laporan-actions {
+    margin-top: 12px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.btn-done,
+.btn-download,
+.btn-view {
+    padding: 6px 14px;
+    border: none;
+    border-radius: 18px;
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.2s;
+}
+
+.btn-done {
+    background: linear-gradient(135deg, #00c853, #009624);
+    color: white;
+}
+
+.btn-done:hover {
+    opacity: 0.85;
+    transform: scale(0.97);
+}
+
+.btn-view {
+    background: #1e90ff;
+    color: white;
+}
+
+.btn-view:hover {
+    opacity: 0.85;
+    transform: scale(0.97);
+}
+
+.btn-download {
+    background: #ffb703;
+    color: #1a1a1a;
+}
+
+.btn-download:hover {
+    opacity: 0.85;
+    transform: scale(0.97);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .laporan-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+    .laporan-actions {
+        flex-direction: column;
+    }
+}
+
+/* Wrapper utama */
+.laporan-detail-wrapper {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 0 15px;
+}
+
+/* Card laporan */
+.laporan-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    padding: 20px 25px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Header laporan */
+.laporan-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 10px;
+}
+
+.laporan-header h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0b1730;
+}
+
+/* Status badge */
+.status-badge {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+/* Warna status */
+.status-pending {
+    background: linear-gradient(135deg, #ffb703, #ff8c00);
+    color: #1a1a1a;
+}
+
+.status-process {
+    background: linear-gradient(135deg, #0096c7, #00b4d8);
+}
+
+.status-diterima {
+    background: linear-gradient(135deg, #1e90ff, #005eff);
+}
+
+.status-done {
+    background: linear-gradient(135deg, #00c853, #009624);
+}
+
+.status-reject {
+    background: linear-gradient(135deg, #ff5252, #c62828);
+}
+
+/* Body laporan */
+.laporan-body {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.laporan-row {
+    display: flex;
+    flex-direction: column;
+}
+
+.laporan-row span {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 4px;
+}
+
+.laporan-row p {
+    margin: 0;
+    padding: 8px 12px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    color: #0b1730;
+    font-size: 0.95rem;
+}
+
+.laporan-isi {
+    white-space: pre-line; /* supaya line break tetap ada */
+}
+
+/* Bukti laporan (gambar/video) */
+.laporan-img {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 5px;
+}
+
+/* Footer laporan */
+.laporan-footer {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 15px;
+}
+
+.btn-back {
+    display: inline-block;
+    padding: 8px 16px;
+    background: #0b74de;
+    color: #fff;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-back:hover {
+    opacity: 0.9;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .laporan-card {
+        padding: 15px 20px;
+    }
+
+    .laporan-header h2 {
+        font-size: 1.3rem;
+    }
+
+    .status-badge {
+        font-size: 0.8rem;
+        padding: 5px 12px;
+    }
+
+    .laporan-row p {
+        font-size: 0.9rem;
+    }
+}

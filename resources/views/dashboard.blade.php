@@ -37,14 +37,6 @@
           <h3>Pengajuan Content Creator</h3>
             <p class="count">{{ $totalContentCreator }}</p>
         </div>
-          <div class="card">
-          <h3>Pengajuan Scripter</h3>
-            <p class="count">{{ $totalScripter }}</p>
-        </div>
-          <div class="card">
-          <h3>Pengajuan Polisi</h3>
-            <p class="count">{{ $totalPolisi }}</p>
-        </div>
       </div>
 
          <div class="panel">
