@@ -20,7 +20,7 @@
   <div class="main">
     <!-- Navbar -->
     <header class="topbar">
-      <h2>Dashboard</h2>
+      <h2>Data Laporan</h2>
       <div class="profile">
         <img src="{{ asset('assets/images/viel.png') }}" alt="profile">
         <span>{{ Auth::user()->username }}</span>
