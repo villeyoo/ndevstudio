@@ -28,14 +28,27 @@ class ReportController extends Controller
             'kontak'     => 'nullable|string|max:255',
             'kategori'   => 'required|string|max:50',
             'isi'        => 'required|string',
-            'attachment' => 'nullable|file|mimes:jpg,jpeg,png,pdf,doc,docx|max:10240',
+            'attachment' => 'nullable|file|max:10240|mimes:jpg,jpeg,png,pdf,doc,docx',
         ]);
 
         $path = null;
 
         if ($request->hasFile('attachment')) {
-            // File akan tersimpan di: public/uploads/laporan/
-            $path = $request->file('attachment')->store('laporan', 'public');
+            $file = $request->file('attachment');
+
+            if ($file->isValid()) {
+
+                $folder = public_path('uploads/laporan');
+
+                if (!is_dir($folder)) {
+                    mkdir($folder, 0755, true);
+                }
+
+                $filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+                $file->move($folder, $filename);
+
+                $path = 'uploads/laporan/' . $filename;
+            }
         }
 
         $token = strtoupper(Str::random(10));
@@ -45,7 +58,7 @@ class ReportController extends Controller
             'kontak'     => $request->kontak,
             'kategori'   => $request->kategori,
             'isi'        => $request->isi,
-            'attachment' => $path,  // Simpan: "laporan/xxx.jpg"
+            'attachment' => $path,
             'token'      => $token,
             'status'     => 'DITERIMA',
         ]);
@@ -54,6 +67,7 @@ class ReportController extends Controller
             ->with('success', 'Laporan berhasil dikirim!')
             ->with('token', $token);
     }
+
 
     public function cekForm()
     {
