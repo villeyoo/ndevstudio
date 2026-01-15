@@ -57,7 +57,8 @@
 
             @if($lapor->attachment && \Illuminate\Support\Facades\Storage::disk('public')->exists($lapor->attachment))
             @php
-            $fileUrl = asset('storage/' . $lapor->attachment);
+
+            $fileUrl = asset('/' . $lapor->attachment);
             $ext = pathinfo($lapor->attachment, PATHINFO_EXTENSION);
             $isImage = in_array(strtolower($ext), ['jpg','jpeg','png','webp','gif']);
             $isVideo = in_array(strtolower($ext), ['mp4','mov','avi','webm','mkv']);
@@ -87,7 +88,8 @@
               @endif
 
               @if($lapor->attachment)
-              <a href="{{ asset('storage/' . $lapor->attachment) }}" target="_blank" class="btn-view">Lihat</a>
+              <a href="{{ asset(  $lapor->attachment) }}" target="_blank" class="btn-view">Lihat</a>
+
               <a href="{{ route('laporan.download', $lapor->id) }}" class="btn-download">Download</a>
               @endif
             </div>

@@ -141,14 +141,19 @@ class AdminController extends Controller
     {
         $laporan = Laporan::findOrFail($id);
 
-        if ($laporan->attachment && Storage::disk('public')->exists($laporan->attachment)) {
-            Storage::disk('public')->delete($laporan->attachment);
+        if ($laporan->attachment) {
+            $path = public_path($laporan->attachment);
+
+            if (file_exists($path)) {
+                unlink($path);
+            }
         }
 
         $laporan->delete();
 
         return back()->with('success', 'Laporan berhasil dihapus.');
     }
+
     public function laporanByStatus($status)
     {
         $laporans = Laporan::where('status', strtoupper($status))
@@ -170,18 +175,21 @@ class AdminController extends Controller
         return back()->with('success', 'Laporan berhasil ditandai SELESAI.');
     }
     public function downloadLaporan($id)
-{
-    $laporan = Laporan::findOrFail($id);
+    {
+        $laporan = Laporan::findOrFail($id);
 
-    if (!$laporan->attachment || !Storage::disk('public')->exists($laporan->attachment)) {
-        return back()->with('error', 'File attachment tidak ditemukan.');
+        if (!$laporan->attachment) {
+            return back()->with('error', 'File attachment tidak ditemukan.');
+        }
+
+        $path = public_path($laporan->attachment);
+
+        if (!file_exists($path)) {
+            return back()->with('error', 'File attachment tidak ditemukan.');
+        }
+
+        $filename = basename($laporan->attachment);
+
+        return response()->download($path, $filename);
     }
-
-    // Ambil path file
-    $path = storage_path('app/public/' . $laporan->attachment);
-    $filename = basename($laporan->attachment);
-
-    return response()->download($path, $filename);
-}
-
 }

@@ -108,7 +108,7 @@
 
                         <div class="laporan-item">
                             <span>Dikirim Pada</span>
-                            <strong>{{ $laporan->created_at->format('d M Y H:i') }}</strong>
+                            <strong>{{ $laporan->created_at->timezone('Asia/Jakarta')->format('d M Y H:i') }}</strong>
                         </div>
 
                         <div class="laporan-status status-{{ strtolower($laporan->status) }}">

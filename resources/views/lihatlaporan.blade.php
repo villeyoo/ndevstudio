@@ -55,15 +55,17 @@
             {{ Str::limit($lapor->isi, 120) }}
           </p>
 
-          <small>Dikirim: {{ $lapor->created_at->format('d M Y H:i') }}</small>
+         <strong>{{ $lapor->created_at->timezone('Asia/Jakarta')->format('d M Y H:i') }}</strong>
+
 
           @if($lapor->attachment)
           <div class="lampiran">
-            <a href="{{ asset('storage/'.$lapor->attachment) }}" target="_blank">
+            <a href="{{ asset($lapor->attachment) }}" target="_blank">
               📎 Lihat Lampiran
             </a>
           </div>
           @endif
+
 
           <div class="card-actions">
 
