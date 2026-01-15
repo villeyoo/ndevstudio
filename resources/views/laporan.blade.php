@@ -26,9 +26,7 @@
                         <li><a href="/">Home</a></li>
                         <li><a href="#komunitas">Komunitas</a></li>
                         <li><a href="#project">Project</a></li>
-                        <li><a href="#collab">Berita</a></li>
                         <li><a href="#collab">Collab</a></li>
-                        <li><a href="/robux">Robux</a></li>
                         <li><a href="{{ url('/login') }}" class="btn-nav">Login</a></li>
                     </ul>
                 </div>
