@@ -34,6 +34,7 @@ class ReportController extends Controller
     $path = null;
 
     if ($request->hasFile('attachment')) {
+        // Simpan ke disk 'public' (sekarang ke public/uploads)
         $path = $request->file('attachment')->store('laporan', 'public');
     }
 

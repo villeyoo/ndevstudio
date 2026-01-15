@@ -122,7 +122,7 @@
 
                         @if($laporan->attachment)
                         <div class="laporan-attachment">
-                            <a href="{{ asset('storage/'.$laporan->attachment) }}" target="_blank">
+                            <a href="{{ asset('uploads/'.$laporan->attachment) }}" target="_blank">
                                 📎 Lihat Lampiran
                             </a>
                         </div>
