@@ -46,7 +46,7 @@
           Menciptakan <b>game kecil</b> dengan suasana santai dan cerita yang dekat.
         </p>
         <div class="hero-buttons">
-          <a href="/laporan" class="btn-secondary">LAPOR.</a>
+          <a href="/laporan" class="btn-secondary">LAPORKAN.</a>
           <a href="{{ url('/hire') }}" class="btn-secondary">Request/Daftar</a>
         </div>
       </div>
